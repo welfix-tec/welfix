@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Gy_Tech Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f9fafb;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+         
+        /* Header Styles */
+      /* Header styling - set a fixed height */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0; /* Remove vertical padding */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px; /* Set a fixed height for the header */
+    display: flex;
+    align-items: center; /* Vertically center content */
+}
+
+/* Container within header */
+header .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Nav styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Take full height of header */
+}
+
+/* Logo styling - increase size without affecting layout */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%; /* Take full height of nav */
+}
+
+.logo-image {
+    height: 200px; /* Increased size - adjust as needed */
+    width: auto;
+    transition: all 0.3s ease;
+    object-fit: contain; /* Ensure image maintains aspect ratio */
+}
+
+/* Optional: if you have text next to the logo */
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-left: 10px;
+}
+
+/* Navigation links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Take full height of nav */
+    align-items: center; /* Vertically center links */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 5px 0; /* Add some vertical padding for better click area */
+}
+
+.nav-links a:hover {
+    color: #4361ee;
+}
+
+/* Get Started button */
+.nav-links .btn {
+    padding: 10px 20px;
+    background: #4361ee;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-links .btn:hover {
+    background: #3a0ca3;
+    transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        height: 60px; /* Slightly smaller header on mobile */
+    }
+    
+    .logo-image {
+        height: 40px; /* Slightly smaller logo on mobile */
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+}
+        /* Contact Hero */
+        .contact-hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.9) 0%, rgba(58, 12, 163, 0.9) 100%);
+            color: white;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .contact-details {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .contact-details li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-details i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            gap: 30px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .process-step i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .process-step h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <!-- Header -->
+     <!-- Header with Navigation -->
+       <header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/welfix transparent.png" alt="Welfiix Logo" class="logo-image">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="our services.html">Our services</a></li>
+                <li><a href="about us.html">About us</a></li>
+                <li><a href="contact us.html" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Let's Start Your Project</h1>
+            <p>Get in touch with us today and let's discuss how we can help your business grow</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Have a project in mind? Fill out the form and our team will get back to you within 24 hours to discuss your requirements.</p>
+                    
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Address</strong><br>
+                                KG 282 st Kigali - Gasabo
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone</strong><br>
+                                + 250-787-011-730
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong><br>
+                                gylainmuv@gmail.com
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Working Hours</strong><br>
+                                Mon-Fri: 9AM - 6PM
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+               <!-- Contact Form Section -->
+<div class="contact-form">
+    <h3>Send Us a Message</h3>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+        
+        <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="web-design">Web Design</option>
+                <option value="qr-codes">QR Solutions</option>
+                <option value="social-media">Social Media Management</option>
+                <option value="blog-posting">Blog Posting</option>
+                <option value="ai-solutions">AI Solutions</option>
+                <option value="business-consulting">Business Consulting</option>
+                <option value="growth-solutions">Growth Solutions</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+</div>
+
+<!-- WhatsApp Section -->
+<div class="whatsapp-section" style="text-align: center; padding: 40px 0; background: #f8f9fa;">
+    <div class="container">
+        <h2>Message Us on WhatsApp</h2>
+        <p>Prefer to chat directly? Contact us on WhatsApp for quick responses.</p>
+        <div class="whatsapp-buttons">
+            <a href="https://wa.me/250787011730?text=Hello%20Gy_Tech%20Solutions,%20I'm%20interested%20in%20your%20services" 
+               class="whatsapp-btn" 
+               style="display: inline-block; background: #25D366; color: white; padding: 15px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; margin: 10px;">
+                <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> WhatsApp Rwanda (+250)
+            </a>
+            <a href="https://wa.me/256771149362?text=Hello%20Gy_Tech%20Solutions,%20I'm%20interested%20in%20your%20services" 
+               class="whatsapp-btn" 
+               style="display: inline-block; background: #25D366; color: white; padding: 15px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; margin: 10px;">
+                <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> WhatsApp Uganda (+256)
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Add these scripts to your page -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+<script>
+    // Initialize EmailJS with your Public Key
+    // You need to sign up at https://www.emailjs.com/ and get these credentials
+    (function() {
+        // Replace with your actual EmailJS Public Key
+        emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+    })();
+    
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitBtn = this.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Send form data via EmailJS
+        emailjs.sendForm('YOUR_EMAILJS_SERVICE_ID', 'YOUR_EMAILJS_TEMPLATE_ID', this)
+            .then(function() {
+                alert('Thank you for your inquiry! We will contact you within 24 hours.');
+                document.getElementById('contactForm').reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, function(error) {
+                alert('Sorry, there was an error sending your message. Please try again or contact us via WhatsApp.');
+                console.log('EmailJS error:', error);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+    });
+</script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2>What Happens Next?</h2>
+            <p>After you submit your inquiry, here's our process</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <i class="fas fa-comments"></i>
+                    <h3>Initial Consultation</h3>
+                    <p>We'll contact you to understand your project requirements and goals.</p>
+                </div>
+                
+                <div class="process-step">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Project Planning</h3>
+                    <p>We'll create a detailed proposal with timeline and cost estimate.</p>
+                </div>
+                
+                <div class="process-step">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Kickoff</h3>
+                    <p>Once approved, we'll start working on your project immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(58, 12, 163, 0.8));
+            z-index: -1;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, #4361ee, #f72585);
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #4361ee;
+            transform: translateY(-5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 12px;
+            color: #4361ee;
+            font-size: 1.2rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            padding: 0 15px;
+            background: #4361ee;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #3a0ca3;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animation for elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer-column {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .footer-column:nth-child(1) { animation-delay: 0.1s; }
+        .footer-column:nth-child(2) { animation-delay: 0.2s; }
+        .footer-column:nth-child(3) { animation-delay: 0.3s; }
+        .footer-column:nth-child(4) { animation-delay: 0.4s; }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+
+    <footer class="footer">
+        <video autoplay muted loop class="video-background">
+            <source src="images/ai.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+        
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>welfix</h3>
+                <p>Transforming businesses through innovative digital solutions. We provide cutting-edge services to help you thrive in the digital age.</p>
+               
+                   <img src="images/welfix transparent.png" alt="Welfiix Logo" class="logo-image">
+ <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="our services.html"><i class="fas fa-laptop-code"></i> Our Services</a></li>
+                    <li><a href="about us.html"><i class="fas fa-users"></i> About Us</a></li>
+                </ul>
+            </div>
+            
+             <div class="footer-column">
+    <h3>Our Services</h3>
+    <ul class="footer-links">
+        <li><a href="Our services.html#web-design"><i class="fas fa-paint-brush"></i> Web Design</a></li>
+        <li><a href="our services.html#qr-codes"><i class="fas fa-qrcode"></i> QR Solutions</a></li>
+        <li><a href="our services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
+        <li><a href="our services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
+        <li><a href="our services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
+        <li><a href="our services.html#business-consulting"><i class="fas fa-chart-line"></i> Business Consulting</a></li>
+        <li><a href="our services.html#growth-solutions"><i class="fas fa-rocket"></i> Growth Solutions</a></li>
+    </ul>
+</div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> KG 282 st Kigali - Gasabo</li>
+                    <li><i class="fas fa-phone"></i> +250-787-011-730</li>
+                    <li><i class="fas fa-envelope"></i> gylainmuv@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                </ul>
+
+
+                <h3>Newsletter</h3>
+                <p>Subscribe for updates and offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 welfix. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add intersection observer for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            footerColumns.forEach(column => {
+                column.style.visibility = 'hidden';
+                observer.observe(column);
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>
