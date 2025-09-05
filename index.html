@@ -285,7 +285,7 @@ nav {
     display: flex;
     justify-content: space-around;
     padding: 15px 0;
-    background-color: ##256cb3;
+    background-color: #256cb3;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -303,7 +303,7 @@ nav {
   
   .mobile-nav i {
     display: block;
-    font-size: 40px;
+    font-size: 20px;
     margin-bottom: 5px;
   }
   
@@ -314,7 +314,7 @@ nav {
   
   /* Adjust service page navigation */
   .service-nav {
-    font-size: 20px;
+    font-size: 14px;
     padding: 8px 12px;
   }
   
@@ -323,6 +323,18 @@ nav {
     padding-bottom: 70px;
   }
 }
+
+/* For larger mobile devices */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .mobile-nav {
+    display: none;
+  }
+  
+  .desktop-nav {
+    display: flex;
+  }
+}
+        
 
 /* For larger mobile devices */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -748,7 +760,7 @@ nav {
     Contact
   </a>
   <a href="contact us.html" class="cta-button">
-    <i>🚀</i>
+    <i></i>
     Get Started
   </a>
 </div>
@@ -1259,4 +1271,5 @@ nav {
 </body>
 
 </html>
+
 
