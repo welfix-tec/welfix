@@ -52,29 +52,10 @@
             transition: all 0.4s ease;
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--secondary);
-            transition: all 0.4s ease;
-            z-index: -1;
-            border-radius: 50px;
-        }
-        
-        .btn:hover::before {
-            width: 100%;
         }
         
         .btn:hover {
+            background: var(--secondary);
             transform: translateY(-5px);
             box-shadow: 0 15px 25px rgba(67, 97, 238, 0.3);
         }
@@ -83,7 +64,7 @@
             background: var(--accent);
         }
         
-        .btn-accent::before {
+        .btn-accent:hover {
             background: #d81159;
         }
         
@@ -192,16 +173,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            z-index: 1001;
         }
         
         .logo-image {
-            height: 200px;
+            height: 50px;
             width: auto;
             transition: all 0.3s ease;
             object-fit: contain;
@@ -249,6 +232,7 @@
             font-size: 1.5rem;
             color: var(--primary);
             cursor: pointer;
+            z-index: 1001;
         }
         
         /* Hero Section */
@@ -600,38 +584,28 @@
         }
         
         /* Responsive Design */
-      @media (max-width: 968px) {
-    .logo {
-        justify-content: center;
-        width: 100%;
-    }
-    
-    .logo-image {
-        height: 200px;
-        max-width: 80%; /* Prevents logo from being too wide */
-        max-height: 200px;
-        object-fit: contain;
-    }
-    
-    /* Ensure header can accommodate the larger logo */
-    header {
-        min-height: 120px;
-        padding: 10px 0;
-    }
-    
-    /* Adjust navigation position */
-    .nav-links.active {
-        top: 130px;
-        height: calc(100vh - 130px);
-    }
-
+        @media (max-width: 968px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 40px;
+                gap: 25px;
+                transition: left 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
             
             .nav-links.active {
                 left: 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
             }
             
             .hero h1 {
@@ -664,29 +638,54 @@
                 justify-content: center;
             }
             
+            /* Centered logo for mobile */
+            nav {
+                flex-direction: column;
+            }
+            
+            .logo {
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
             .logo-image {
                 height: 200px;
+                max-width: 100%;
+            }
+            
+            /* Adjust header for larger logo */
+            header {
+                padding: 15px 0;
+            }
+            
+            /* Adjust mobile menu position */
+            .nav-links {
+                top: calc(80px + 200px);
+                height: calc(100vh - (80px + 200px));
             }
         }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+
+        @media (max-width: 480px) {
+            .logo-image {
+                height: 150px;
             }
-            to {
-                opacity: 1;
+            
+            .nav-links {
+                top: calc(80px + 150px);
+                height: calc(100vh - (80px + 150px));
             }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            
+            .hero h1 {
+                font-size: 2rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -702,13 +701,13 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">
-                    <img src="images/welfix transparent.png" alt="Welfix Logo" class="logo-image">
+                    <img src="images/welfix-transparent.png" alt="Welfix Logo" class="logo-image">
                 </a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="our services.html">Our Services</a></li>
-                    <li><a href="About us.html">About Us</a></li>
-                    <li><a href="contact us.html" class="btn">Get Started</a></li>
+                    <li><a href="our-services.html">Our Services</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact-us.html" class="btn">Get Started</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -724,8 +723,8 @@
                 <h1>Transform Your Digital Presence</h1>
                 <p>We provide cutting-edge digital solutions to elevate your business - from web design and AI solutions to growth strategies and beyond.</p>
                 <div class="hero-buttons">
-                    <a href="our services.html" class="btn">Explore Our Services</a>
-                    <a href="contact us.html" class="btn btn-accent">Get Free Consultation</a>
+                    <a href="our-services.html" class="btn">Explore Our Services</a>
+                    <a href="contact-us.html" class="btn btn-accent">Get Free Consultation</a>
                 </div>
             </div>
         </div>
@@ -936,5 +935,3 @@
     </script>
 </body>
 </html>
-
-
