@@ -201,7 +201,7 @@
         }
         
         .logo-image {
-            height: 50px;
+            height: 200px;
             width: auto;
             transition: all 0.3s ease;
             object-fit: contain;
@@ -600,21 +600,31 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 968px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                justify-content: flex-start;
-                padding-top: 40px;
-                gap: 20px;
-                transition: left 0.3s ease;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            }
+      @media (max-width: 968px) {
+    .logo {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .logo-image {
+        height: 200px;
+        max-width: 80%; /* Prevents logo from being too wide */
+        max-height: 200px;
+        object-fit: contain;
+    }
+    
+    /* Ensure header can accommodate the larger logo */
+    header {
+        min-height: 120px;
+        padding: 10px 0;
+    }
+    
+    /* Adjust navigation position */
+    .nav-links.active {
+        top: 130px;
+        height: calc(100vh - 130px);
+    }
+
             
             .nav-links.active {
                 left: 0;
@@ -655,7 +665,7 @@
             }
             
             .logo-image {
-                height: 40px;
+                height: 200px;
             }
         }
         
@@ -926,4 +936,5 @@
     </script>
 </body>
 </html>
+
 
