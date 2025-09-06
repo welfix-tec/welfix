@@ -160,35 +160,43 @@
         }
         
         /* Header Styles */
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            z-index: 1001;
-        }
-        
-        .logo-image {
-            height: 400px; /* 200px on desktop */
-            width: auto;
-            transition: all 0.3s ease;
-            object-fit: contain;
-        }
+      header .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Nav styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Take full height of header */
+}
+
+/* Logo styling - increase size without affecting layout */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%; /* Take full height of nav */
+}
+
+.logo-image {
+    height: 200px; /* Increased size - adjust as needed */
+    width: auto;
+    transition: all 0.3s ease;
+    object-fit: contain; /* Ensure image maintains aspect ratio */
+}
+
+/* Optional: if you have text next to the logo */
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-left: 10px;
+}
         
         .nav-links {
             display: flex;
@@ -933,6 +941,7 @@
     </script>
 </body>
 </html>
+
 
 
 
