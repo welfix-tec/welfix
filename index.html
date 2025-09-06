@@ -184,7 +184,7 @@
         }
         
         .logo-image {
-            height: 50px;
+            height: 200px; /* 200px on desktop */
             width: auto;
             transition: all 0.3s ease;
             object-fit: contain;
@@ -237,7 +237,7 @@
         
         /* Hero Section */
         .hero {
-            padding: 150px 0 100px;
+            padding: 200px 0 120px; /* Increased padding to account for larger logo */
             background: linear-gradient(135deg, rgba(67, 97, 238, 0.9) 0%, rgba(58, 12, 163, 0.9) 100%);
             color: white;
             text-align: center;
@@ -591,21 +591,25 @@
             
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
+                width: 80%;
+                height: 100vh;
                 background: white;
                 flex-direction: column;
-                justify-content: flex-start;
-                padding-top: 40px;
-                gap: 25px;
+                justify-content: center;
+                gap: 30px;
                 transition: left 0.3s ease;
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
             }
             
             .nav-links.active {
                 left: 0;
+            }
+            
+            .hero {
+                padding: 250px 0 120px; /* Adjusted for mobile */
             }
             
             .hero h1 {
@@ -641,16 +645,17 @@
             /* Centered logo for mobile */
             nav {
                 flex-direction: column;
+                align-items: center;
             }
             
             .logo {
                 justify-content: center;
                 width: 100%;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
             }
             
             .logo-image {
-                height: 200px;
+                height: 200px; /* 200px on mobile */
                 max-width: 100%;
             }
             
@@ -658,22 +663,11 @@
             header {
                 padding: 15px 0;
             }
-            
-            /* Adjust mobile menu position */
-            .nav-links {
-                top: calc(80px + 200px);
-                height: calc(100vh - (80px + 200px));
-            }
         }
 
         @media (max-width: 480px) {
             .logo-image {
-                height: 150px;
-            }
-            
-            .nav-links {
-                top: calc(80px + 150px);
-                height: calc(100vh - (80px + 150px));
+                height: 180px; /* Slightly smaller on very small screens */
             }
             
             .hero h1 {
@@ -686,6 +680,10 @@
             
             .section-title h2 {
                 font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 200px 0 100px;
             }
         }
     </style>
@@ -833,7 +831,7 @@
         <div class="container">
             <h2>Ready to Transform Your Business?</h2>
             <p>Contact us today for a free consultation and let's discuss how we can help you achieve your digital goals.</p>
-            <a href="contact us.html" class="btn">Get Started Today</a>
+            <a href="contact-us.html" class="btn">Get Started Today</a>
         </div>
     </section>
 
@@ -849,7 +847,7 @@
             <div class="footer-column">
                 <h3>Welfix</h3>
                 <p>Transforming businesses through innovative digital solutions. We provide cutting-edge services to help you thrive in the digital age.</p>
-                <img src="images/welfix-transparent.png" alt="Welfix Logo" class="logo-image" style="height: 60px; margin: 15px 0;">
+                <img src="images/welfix transparent.png" alt="Welfix Logo" class="logo-image" style="height: 80px; margin: 15px 0;">
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -872,11 +870,11 @@
                 <ul class="footer-links">
                     <li><a href="our services.html#web-design"><i class="fas fa-paint-brush"></i> Web Design</a></li>
                     <li><a href="our services.html#qr-codes"><i class="fas fa-qrcode"></i> QR Solutions</a></li>
-                    <li><a href="our services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
-                    <li><a href="our services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
-                    <li><a href="our services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
-                    <li><a href="our services.html#business-consulting"><i class="fas fa-chart-line"></i> Business Consulting</a></li>
-                    <li><a href="our services.html#growth-solutions"><i class="fas fa-rocket"></i> Growth Solutions</a></li>
+                    <li><a href="our-services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
+                    <li><a href="our-services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
+                    <li><a href="our-services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
+                    <li><a href="our-services.html#business-consulting"><i class="fas fa-chart-line"></i> Business Consulting</a></li>
+                    <li><a href="our-services.html#growth-solutions"><i class="fas fa-rocket"></i> Growth Solutions</a></li>
                 </ul>
             </div>
             
@@ -919,7 +917,7 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars'></i>';
             });
         });
         
@@ -935,4 +933,3 @@
     </script>
 </body>
 </html>
-
