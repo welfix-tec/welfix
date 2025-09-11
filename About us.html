@@ -75,7 +75,7 @@
             margin: 0 auto;
         }
         
-        /* Header Styles */
+        
        /* Header styling - set a fixed height */
 header {
     background: white;
@@ -189,7 +189,7 @@ nav {
             max-width: 700px;
             margin: 0 auto 30px;
         }
-        
+    
         /* Story Section */
         .story-section {
             background: white;
@@ -381,14 +381,8 @@ nav {
             margin: 0 auto 30px;
             font-size: 1.1rem;
         }
-        
-        
-        
-       
-        
-     
 <style>
-/* Mobile Responsive Fix */
+/* Mobile Responsive Fix for About Us Page */
 @media screen and (max-width: 968px) {
     /* Hide desktop navigation on mobile */
     .nav-links {
@@ -404,6 +398,7 @@ nav {
         color: var(--primary);
         cursor: pointer;
         z-index: 1001;
+        margin-left: 15px;
     }
     
     /* Mobile navigation styling */
@@ -446,7 +441,7 @@ nav {
     
     /* Adjust header for mobile */
     header {
-        height: 80px;
+        height: 70px;
         padding: 10px 0;
     }
     
@@ -463,19 +458,35 @@ nav {
         padding-bottom: 70px;
     }
     
-    /* Service nav adjustments */
-    .service-nav {
-        top: 80px; /* Adjusted for smaller header */
+    /* Adjust hero section for mobile */
+    .about-hero {
+        padding: 120px 0 80px;
     }
     
-    .service-nav-links {
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* Story section adjustments */
+    .story-content {
         flex-direction: column;
-        gap: 10px;
-        padding: 15px 0;
     }
     
-    .service-nav-links li {
-        margin: 5px 0;
+    .story-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+    
+    /* Values grid adjustments */
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Team grid adjustments */
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
@@ -492,6 +503,15 @@ nav {
     .logo-image {
         height: 150px;
     }
+    
+    /* Adjust grid layouts for tablet */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Very small devices */
@@ -507,35 +527,68 @@ nav {
     .mobile-nav i {
         font-size: 18px;
     }
+    
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .about-hero p {
+        font-size: 1rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
 }
 </style>
 
-<!-- Add this mobile menu button to your header -->
+<!-- Add this mobile menu button to your header HTML -->
 <button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
     <i class="fas fa-bars"></i>
 </button>
 
 <script>
-// Mobile menu functionality
+// Mobile menu functionality for About Us page
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.querySelector('.nav-links');
     
     // Toggle mobile menu
-    if (mobileMenuBtn) {
+    if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'fixed';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '20px';
+                navLinks.style.gap = '15px';
+                navLinks.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                navLinks.style.zIndex = '999';
+            }
         });
     }
     
     // Show/hide mobile menu button based on screen size
     function checkScreenSize() {
         if (window.innerWidth <= 968) {
-            mobileMenuBtn.style.display = 'block';
-            navLinks.style.display = 'none';
+            if (mobileMenuBtn) mobileMenuBtn.style.display = 'block';
+            if (navLinks) navLinks.style.display = 'none';
         } else {
-            mobileMenuBtn.style.display = 'none';
-            navLinks.style.display = 'flex';
+            if (mobileMenuBtn) mobileMenuBtn.style.display = 'none';
+            if (navLinks) {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'static';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.padding = '0';
+                navLinks.style.background = 'transparent';
+                navLinks.style.boxShadow = 'none';
+            }
         }
     }
     
@@ -544,6 +597,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check on resize
     window.addEventListener('resize', checkScreenSize);
+    
+    // Close menu when clicking on links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 968 && navLinks) {
+                navLinks.style.display = 'none';
+            }
+        });
+    });
 });
 </script>
 
@@ -1076,6 +1138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 
 </html>
+
 
 
 
