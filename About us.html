@@ -167,69 +167,7 @@ nav {
     transform: translateY(-2px);
 }
 
-/* Mobile Responsive Styles */
-@media screen and (max-width: 768px) {
-  /* Center the logo on mobile */
-  .logo {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  /* Create mobile navigation */
-  .mobile-nav {
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0;
-    background-color: #256cb3;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-  }
-  
-  .mobile-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 12px;
-    text-align: center;
-    flex: 1;
-  }
-  
-  .mobile-nav i {
-    display: block;
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
-  
-  /* Hide desktop navigation on mobile */
-  .desktop-nav {
-    display: none;
-  }
-  
-  /* Adjust service page navigation */
-  .service-nav {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-  
-  /* Add padding to content to account for fixed bottom nav */
-  body {
-    padding-bottom: 70px;
-  }
-}
 
-/* For larger mobile devices */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .mobile-nav {
-    display: none;
-  }
-  
-  .desktop-nav {
-    display: flex;
-  }
-}
         /* Hero Section */
         .about-hero {
             padding: 150px 0 100px;
@@ -471,6 +409,167 @@ nav {
             }
         }
     </style>
+<style>
+/* Mobile Responsive Fix */
+@media screen and (max-width: 968px) {
+    /* Hide desktop navigation on mobile */
+    .nav-links {
+        display: none;
+    }
+    
+    /* Show mobile menu button */
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--primary);
+        cursor: pointer;
+        z-index: 1001;
+    }
+    
+    /* Mobile navigation styling */
+    .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        padding: 15px 0;
+        background-color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .mobile-nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+        text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mobile-nav i {
+        font-size: 20px;
+        margin-bottom: 5px;
+        color: var(--primary);
+    }
+    
+    .mobile-nav .cta-button {
+        background: var(--primary);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+    }
+    
+    /* Adjust header for mobile */
+    header {
+        height: 80px;
+        padding: 10px 0;
+    }
+    
+    nav {
+        justify-content: space-between;
+    }
+    
+    .logo-image {
+        height: 50px; /* Smaller logo on mobile */
+    }
+    
+    /* Add padding to content to account for fixed bottom nav */
+    body {
+        padding-bottom: 70px;
+    }
+    
+    /* Service nav adjustments */
+    .service-nav {
+        top: 80px; /* Adjusted for smaller header */
+    }
+    
+    .service-nav-links {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+    }
+    
+    .service-nav-links li {
+        margin: 5px 0;
+    }
+}
+
+/* For larger mobile devices */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .mobile-nav {
+        display: none;
+    }
+    
+    .nav-links {
+        display: flex;
+    }
+    
+    .logo-image {
+        height: 150px;
+    }
+}
+
+/* Very small devices */
+@media screen and (max-width: 480px) {
+    .logo-image {
+        height: 40px;
+    }
+    
+    .mobile-nav a {
+        font-size: 10px;
+    }
+    
+    .mobile-nav i {
+        font-size: 18px;
+    }
+}
+</style>
+
+<!-- Add this mobile menu button to your header -->
+<button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+    <i class="fas fa-bars"></i>
+</button>
+
+<script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // Toggle mobile menu
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    }
+    
+    // Show/hide mobile menu button based on screen size
+    function checkScreenSize() {
+        if (window.innerWidth <= 968) {
+            mobileMenuBtn.style.display = 'block';
+            navLinks.style.display = 'none';
+        } else {
+            mobileMenuBtn.style.display = 'none';
+            navLinks.style.display = 'flex';
+        }
+    }
+    
+    // Initial check
+    checkScreenSize();
+    
+    // Check on resize
+    window.addEventListener('resize', checkScreenSize);
+});
+</script>
+
+    
 </head>
 <body>
         <!-- Header with Navigation -->
@@ -990,9 +1089,14 @@ nav {
             });
         });
     </script>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+    <i class="fas fa-bars"></i>
+</button>
 </body>
 </html>
 </body>
 
 </html>
+
 
