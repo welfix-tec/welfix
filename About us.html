@@ -98,11 +98,15 @@
             text-decoration: none;
         }
         
-        .logo-image {
-            height: 50px;
-            width: auto;
-            transition: all 0.3s ease;
-            object-fit: contain;
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
         }
         
         /* Desktop Navigation */
@@ -121,14 +125,30 @@
             font-weight: 500;
             transition: color 0.3s;
             padding: 5px 0;
+            position: relative;
         }
         
-        .nav-links a:hover {
+        .nav-links a:not(.btn):hover {
             color: var(--primary);
         }
         
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+        
         .nav-links .btn {
-            padding: 10px 20px;
+            padding: 10px 25px;
             background: var(--primary);
             color: white;
             border-radius: 30px;
@@ -140,6 +160,7 @@
         .nav-links .btn:hover {
             background: var(--secondary);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 12, 163, 0.2);
         }
         
         /* Mobile menu button */
@@ -530,7 +551,7 @@
                 align-items: center;
                 transition: right 0.3s ease;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                gap: 20px;
+                gap: 25px;
             }
             
             .nav-links.active {
@@ -552,10 +573,6 @@
             /* Adjust header for mobile */
             header {
                 padding: 15px 0;
-            }
-            
-            .logo-image {
-                height: 40px;
             }
             
             /* Adjust hero section for mobile */
@@ -611,10 +628,6 @@
         }
         
         @media (max-width: 480px) {
-            .logo-image {
-                height: 35px;
-            }
-            
             .about-hero h1 {
                 font-size: 2rem;
             }
@@ -626,140 +639,36 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
-
-
-    <style>
-/* Logo styling - fixed */
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    height: 70px; /* Match header height */
-}
-
-.logo-image {
-    height: 50px; /* Reasonable logo size */
-    width: auto;
-    transition: all 0.3s ease;
-    object-fit: contain;
-}
-
-/* Desktop Navigation - hide mobile button */
-@media (min-width: 969px) {
-    .mobile-menu-btn {
-        display: none !important;
-    }
-    
-    .mobile-nav {
-        display: none !important;
-    }
-    
-    .nav-links {
-        display: flex !important;
-        list-style: none;
-        gap: 30px;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-    }
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 968px) {
-    .logo-image {
-        height: 40px; /* Slightly smaller on mobile */
-    }
-    
-    /* Ensure mobile menu button is visible on mobile */
-    .mobile-menu-btn {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--primary);
-        cursor: pointer;
-        z-index: 1001;
-    }
-    
-    /* Hide desktop nav on mobile */
-    .nav-links {
-        display: none;
-    }
-    
-    /* Show mobile nav when active */
-    .nav-links.active {
-        display: flex;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 20px;
-        gap: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        z-index: 999;
-    }
-}
-</style>
 </head>
 <body>
     <!-- Header with Navigation -->
-    <!-- Header with corrected navigation -->
-<header>
-    <div class="container">
-        <nav>
+    <header>
+        <div class="container">
             <a href="index.html" class="logo">
-                <img src="welfix logo 200x60px.png" alt="Welfix Logo" class="logo-image">
-                <span class="logo-text">Welfix</span>
+                <div class="logo-text">Welf<span>ix</span></div>
             </a>
             
-            <!-- Mobile menu button (hidden on desktop) -->
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
             
-            <!-- Desktop navigation -->
             <ul class="nav-links" id="navLinks">
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="our services.html">Our services</a></li>
-                <li><a href="About us.html">About us</a></li>
-                <li><a href="contact us.html" class="btn">Get Started</a></li>
+                <li><a href="our-services.html">Our Services</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact-us.html" class="btn">Get Started</a></li>
             </ul>
-        </nav>
-    </div>
-</header>
-
-<script>
-// Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-    
-    // Toggle mobile menu
-    if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-    }
-    
-    // Close menu when clicking on links
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navLinks.contains(e.target) && e.target !== mobileMenuBtn) {
-            navLinks.classList.remove('active');
-        }
-    });
-});
-</script>
+        </div>
+    </header>
 
     <!-- About Hero Section -->
     <section class="about-hero">
@@ -830,7 +739,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sarah Johnson">
                     </div>
                     <div class="member-info">
                         <h3>Sarah Johnson</h3>
@@ -845,7 +754,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Emily Chen">
                     </div>
                     <div class="member-info">
                         <h3>Emily Chen</h3>
@@ -860,7 +769,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Michael Rodriguez">
                     </div>
                     <div class="member-info">
                         <h3>Michael Rodriguez</h3>
@@ -875,7 +784,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jessica Williams">
                     </div>
                     <div class="member-info">
                         <h3>Jessica Williams</h3>
@@ -1020,5 +929,3 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
-
-
