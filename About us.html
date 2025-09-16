@@ -628,30 +628,138 @@
             }
         }
     </style>
+
+
+    <style>
+/* Logo styling - fixed */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 70px; /* Match header height */
+}
+
+.logo-image {
+    height: 50px; /* Reasonable logo size */
+    width: auto;
+    transition: all 0.3s ease;
+    object-fit: contain;
+}
+
+/* Desktop Navigation - hide mobile button */
+@media (min-width: 969px) {
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .mobile-nav {
+        display: none !important;
+    }
+    
+    .nav-links {
+        display: flex !important;
+        list-style: none;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 968px) {
+    .logo-image {
+        height: 40px; /* Slightly smaller on mobile */
+    }
+    
+    /* Ensure mobile menu button is visible on mobile */
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--primary);
+        cursor: pointer;
+        z-index: 1001;
+    }
+    
+    /* Hide desktop nav on mobile */
+    .nav-links {
+        display: none;
+    }
+    
+    /* Show mobile nav when active */
+    .nav-links.active {
+        display: flex;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+}
+</style>
 </head>
 <body>
     <!-- Header with Navigation -->
-    <header>
-        <div class="container">
+    <!-- Header with corrected navigation -->
+<header>
+    <div class="container">
+        <nav>
             <a href="index.html" class="logo">
+                <img src="images/welfix transparent.png" alt="Welfix Logo" class="logo-image">
                 <span class="logo-text">Welfix</span>
             </a>
             
+            <!-- Mobile menu button (hidden on desktop) -->
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
             
+            <!-- Desktop navigation -->
             <ul class="nav-links" id="navLinks">
-                <button class="close-menu" id="closeMenu">
-                    <i class="fas fa-times"></i>
-                </button>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="our-services.html">Our Services</a></li>
-                <li><a href="about-us.html" class="active">About Us</a></li>
+                <li><a href="our-services.html">Our services</a></li>
+                <li><a href="about-us.html">About us</a></li>
                 <li><a href="contact-us.html" class="btn">Get Started</a></li>
             </ul>
-        </div>
-    </header>
+        </nav>
+    </div>
+</header>
+
+<script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    // Toggle mobile menu
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Close menu when clicking on links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && e.target !== mobileMenuBtn) {
+            navLinks.classList.remove('active');
+        }
+    });
+});
+</script>
 
     <!-- About Hero Section -->
     <section class="about-hero">
@@ -912,3 +1020,4 @@
     </script>
 </body>
 </html>
+
