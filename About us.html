@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | DigitalEdge</title>
+    <title>About Us | Welfix</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
@@ -75,99 +75,84 @@
             margin: 0 auto;
         }
         
+        /* Header styling */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
         
-       /* Header styling - set a fixed height */
-header {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 0; /* Remove vertical padding */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 70px; /* Set a fixed height for the header */
-    display: flex;
-    align-items: center; /* Vertically center content */
-}
-
-/* Container within header */
-header .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Nav styling */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%; /* Take full height of header */
-}
-
-/* Logo styling - increase size without affecting layout */
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    height: 100%; /* Take full height of nav */
-}
-
-.logo-image {
-    height: 200px; /* Increased size - adjust as needed */
-    width: auto;
-    transition: all 0.3s ease;
-    object-fit: contain; /* Ensure image maintains aspect ratio */
-}
-
-/* Optional: if you have text next to the logo */
-.logo-text {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #333;
-    margin-left: 10px;
-}
-
-/* Navigation links */
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-    height: 100%; /* Take full height of nav */
-    align-items: center; /* Vertically center links */
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-    padding: 5px 0; /* Add some vertical padding for better click area */
-}
-
-.nav-links a:hover {
-    color: #4361ee;
-}
-
-/* Get Started button */
-.nav-links .btn {
-    padding: 10px 20px;
-    background: #4361ee;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.nav-links .btn:hover {
-    background: #3a0ca3;
-    transform: translateY(-2px);
-}
-
-
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Logo styling */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+        
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links .btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
         /* Hero Section */
         .about-hero {
             padding: 150px 0 100px;
@@ -381,465 +366,6 @@ nav {
             margin: 0 auto 30px;
             font-size: 1.1rem;
         }
-<style>
-/* Mobile Responsive Fix for About Us Page */
-@media screen and (max-width: 968px) {
-    /* Hide desktop navigation on mobile */
-    .nav-links {
-        display: none;
-    }
-    
-    /* Show mobile menu button */
-    .mobile-menu-btn {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--primary);
-        cursor: pointer;
-        z-index: 1001;
-        margin-left: 15px;
-    }
-    
-    /* Mobile navigation styling */
-    .mobile-nav {
-        display: flex;
-        justify-content: space-around;
-        padding: 15px 0;
-        background-color: white;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        z-index: 1000;
-        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .mobile-nav a {
-        text-decoration: none;
-        color: #333;
-        font-size: 12px;
-        text-align: center;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .mobile-nav i {
-        font-size: 20px;
-        margin-bottom: 5px;
-        color: var(--primary);
-    }
-    
-    .mobile-nav .cta-button {
-        background: var(--primary);
-        color: white;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-weight: 600;
-    }
-    
-    /* Adjust header for mobile */
-    header {
-        height: 70px;
-        padding: 10px 0;
-    }
-    
-    nav {
-        justify-content: space-between;
-    }
-    
-    .logo-image {
-        height: 50px; /* Smaller logo on mobile */
-    }
-    
-    /* Add padding to content to account for fixed bottom nav */
-    body {
-        padding-bottom: 70px;
-    }
-    
-    /* Adjust hero section for mobile */
-    .about-hero {
-        padding: 120px 0 80px;
-    }
-    
-    .about-hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    /* Story section adjustments */
-    .story-content {
-        flex-direction: column;
-    }
-    
-    .story-image {
-        order: -1;
-        margin-bottom: 30px;
-    }
-    
-    /* Values grid adjustments */
-    .values-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    /* Team grid adjustments */
-    .team-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-
-/* For larger mobile devices */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .mobile-nav {
-        display: none;
-    }
-    
-    .nav-links {
-        display: flex;
-    }
-    
-    .logo-image {
-        height: 150px;
-    }
-    
-    /* Adjust grid layouts for tablet */
-    .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Very small devices */
-@media screen and (max-width: 480px) {
-    .logo-image {
-        height: 40px;
-    }
-    
-    .mobile-nav a {
-        font-size: 10px;
-    }
-    
-    .mobile-nav i {
-        font-size: 18px;
-    }
-    
-    .about-hero h1 {
-        font-size: 2rem;
-    }
-    
-    .about-hero p {
-        font-size: 1rem;
-    }
-    
-    .section-title h2 {
-        font-size: 2rem;
-    }
-}
-</style>
-
-<!-- Add this mobile menu button to your header HTML -->
-<button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
-    <i class="fas fa-bars"></i>
-</button>
-
-<script>
-// Mobile menu functionality for About Us page
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // Toggle mobile menu
-    if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', function() {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.position = 'fixed';
-                navLinks.style.top = '70px';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.padding = '20px';
-                navLinks.style.gap = '15px';
-                navLinks.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-                navLinks.style.zIndex = '999';
-            }
-        });
-    }
-    
-    // Show/hide mobile menu button based on screen size
-    function checkScreenSize() {
-        if (window.innerWidth <= 968) {
-            if (mobileMenuBtn) mobileMenuBtn.style.display = 'block';
-            if (navLinks) navLinks.style.display = 'none';
-        } else {
-            if (mobileMenuBtn) mobileMenuBtn.style.display = 'none';
-            if (navLinks) {
-                navLinks.style.display = 'flex';
-                navLinks.style.position = 'static';
-                navLinks.style.flexDirection = 'row';
-                navLinks.style.padding = '0';
-                navLinks.style.background = 'transparent';
-                navLinks.style.boxShadow = 'none';
-            }
-        }
-    }
-    
-    // Initial check
-    checkScreenSize();
-    
-    // Check on resize
-    window.addEventListener('resize', checkScreenSize);
-    
-    // Close menu when clicking on links
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 968 && navLinks) {
-                navLinks.style.display = 'none';
-            }
-        });
-    });
-});
-</script>
-
-    
-</head>
-<body>
-        <!-- Header with Navigation -->
-       <header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">
-                <img src="images/welfix transparent.png" alt="Welfiix Logo" class="logo-image">
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="our services.html">Our services</a></li>
-                <li><a href="About us.html">About us</a></li>
-                <li><a href="contact us.html" class="btn">Get Started</a></li>
-            </ul>
-        </nav>
-    </div>
-<!-- Mobile Navigation (add this before closing body tag) -->
-<div class="mobile-nav">
-  <a href="index.html">
-    <i></i>
-    Home
-  </a>
-  <a href="About us.html">
-    <i></i>
-    About Us
-  </a>
-  <a href="contact us.html">
-    <i></i>
-    Contact
-  </a>
-  <a href="contact us.html" class="cta-button">
-    <i></i>
-    Get Started
-  </a>
-</div>
-
-           
-</header>
-
-    <!-- About Hero Section -->
-    <section class="about-hero">
-        <div class="container">
-            <h1>Our Story & Mission</h1>
-            <p>Learn about our journey, values, and the passionate team behind DigitalEdge</p>
-        </div>
-    </section>
-
-    <!-- Our Story Section -->
-    <section class="story-section">
-        <div class="container">
-            <div class="story-content">
-                <div class="story-text">
-                    <h2>Our Journey</h2>
-                    <p>DigitalEdge was founded in 2015 with a simple vision: to help businesses thrive in the digital age. What started as a small team of passionate digital enthusiasts has grown into a full-service digital agency serving clients across various industries.</p>
-                    <p>Our journey began when our founder, Sarah Johnson, recognized that many businesses struggled to adapt to the rapidly changing digital landscape. They either lacked the expertise, resources, or time to implement effective digital strategies.</p>
-                    <p>We've since helped over 500 businesses transform their digital presence, increase their online visibility, and achieve their business goals through our comprehensive suite of services.</p>
-                    <p>Today, we continue to evolve and innovate, staying ahead of industry trends and technologies to deliver exceptional results for our clients.</p>
-                </div>
-                <div class="story-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our team collaborating">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section class="values-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Mission & Values</h2>
-                <p>The principles that guide everything we do at DigitalEdge</p>
-            </div>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Our Mission</h3>
-                    <p>To empower businesses of all sizes with cutting-edge digital solutions that drive growth, enhance visibility, and create meaningful connections with their audience.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Our Vision</h3>
-                    <p>To be the leading digital partner for businesses worldwide, recognized for innovation, excellence, and transformative results.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Our Values</h3>
-                    <p>Integrity, innovation, collaboration, and excellence are at the core of everything we do. We believe in building lasting relationships based on trust and results.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Meet Our Team</h2>
-                <p>The talented professionals behind DigitalEdge's success</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sarah Johnson">
-                    </div>
-                    <div class="member-info">
-                        <h3>Sarah Johnson</h3>
-                        <p class="member-role">CEO & Founder</p>
-                        <p>With over 15 years in the digital industry, Sarah leads our vision and strategy.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Emily Chen">
-                    </div>
-                    <div class="member-info">
-                        <h3>Emily Chen</h3>
-                        <p class="member-role">Creative Director</p>
-                        <p>Emily brings innovative design solutions and creative strategies to our clients.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Michael Rodriguez">
-                    </div>
-                    <div class="member-info">
-                        <h3>Michael Rodriguez</h3>
-                        <p class="member-role">Technical Lead</p>
-                        <p>Michael oversees our development team and ensures technical excellence.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jessica Williams">
-                    </div>
-                    <div class="member-info">
-                        <h3>Jessica Williams</h3>
-                        <p class="member-role">Marketing Director</p>
-                        <p>Jessica develops data-driven marketing strategies that deliver results.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Clients Served</p>
-                </div>
-                <div class="stat-item">
-                    <h3>8+</h3>
-                    <p>Years Experience</p>
-                </div>
-                <div class="stat-item">
-                    <h3>95%</h3>
-                    <p>Client Retention</p>
-                </div>
-                <div class="stat-item">
-                    <h3>250+</h3>
-                    <p>Projects Completed</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Work With Us?</h2>
-            <p>Join hundreds of satisfied clients who have transformed their business with our digital solutions.</p>
-            <a href="contact.html" class="btn">Get In Touch</a>
-        </div>
-    </section>
-
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Footer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .main-content {
-            flex: 1;
-            padding: 40px;
-            text-align: center;
-        }
         
         /* Footer Styles */
         .footer {
@@ -848,26 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
             min-height: 300px;
             overflow: hidden;
             color: white;
-        }
-        
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(58, 12, 163, 0.8));
-            z-index: -1;
+            background: #2c3e50;
         }
         
         .footer-content {
@@ -891,6 +398,7 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-bottom: 20px;
             position: relative;
             display: inline-block;
+            color: #ffdd40;
         }
         
         .footer-column h3::after {
@@ -929,13 +437,13 @@ document.addEventListener('DOMContentLoaded', function() {
             font-size: 0.9rem;
         }
         
-        .social-links {
+        .footer-social-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
         
-        .social-links a {
+        .footer-social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -948,7 +456,7 @@ document.addEventListener('DOMContentLoaded', function() {
             transition: all 0.3s ease;
         }
         
-        .social-links a:hover {
+        .footer-social-links a:hover {
             background: #4361ee;
             transform: translateY(-5px);
         }
@@ -1003,29 +511,85 @@ document.addEventListener('DOMContentLoaded', function() {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Animation for elements */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .footer-column {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        .footer-column:nth-child(1) { animation-delay: 0.1s; }
-        .footer-column:nth-child(2) { animation-delay: 0.2s; }
-        .footer-column:nth-child(3) { animation-delay: 0.3s; }
-        .footer-column:nth-child(4) { animation-delay: 0.4s; }
-        
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            /* Mobile Navigation */
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                gap: 20px;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            /* Close button for mobile menu */
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--dark);
+                cursor: pointer;
+            }
+            
+            /* Adjust header for mobile */
+            header {
+                padding: 15px 0;
+            }
+            
+            .logo-image {
+                height: 40px;
+            }
+            
+            /* Adjust hero section for mobile */
+            .about-hero {
+                padding: 120px 0 80px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            /* Story section adjustments */
+            .story-content {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                order: -1;
+                margin-bottom: 30px;
+            }
+            
+            /* Values grid adjustments */
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            /* Team grid adjustments */
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            /* Footer adjustments */
             .footer-content {
                 flex-direction: column;
             }
@@ -1034,29 +598,232 @@ document.addEventListener('DOMContentLoaded', function() {
                 min-width: 100%;
             }
         }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Adjust grid layouts for tablet */
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-image {
+                height: 35px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
- 
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Welfix</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="our-services.html">Our Services</a></li>
+                <li><a href="about-us.html" class="active">About Us</a></li>
+                <li><a href="contact-us.html" class="btn">Get Started</a></li>
+            </ul>
+        </div>
+    </header>
 
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Our Story & Mission</h1>
+            <p>Learn about our journey, values, and the passionate team behind Welfix</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Journey</h2>
+                    <p>Welfix was founded with a simple vision: to help businesses thrive in the digital age. What started as a small team of passionate digital enthusiasts has grown into a full-service digital agency serving clients across various industries.</p>
+                    <p>Our journey began when our founder recognized that many businesses struggled to adapt to the rapidly changing digital landscape. They either lacked the expertise, resources, or time to implement effective digital strategies.</p>
+                    <p>We've since helped hundreds of businesses transform their digital presence, increase their online visibility, and achieve their business goals through our comprehensive suite of services.</p>
+                    <p>Today, we continue to evolve and innovate, staying ahead of industry trends and technologies to deliver exceptional results for our clients.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our team collaborating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Values</h2>
+                <p>The principles that guide everything we do at Welfix</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses of all sizes with cutting-edge digital solutions that drive growth, enhance visibility, and create meaningful connections with their audience.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading digital partner for businesses worldwide, recognized for innovation, excellence, and transformative results.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>Integrity, innovation, collaboration, and excellence are at the core of everything we do. We believe in building lasting relationships based on trust and results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>The talented professionals behind Welfix's success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sarah Johnson</h3>
+                        <p class="member-role">CEO & Founder</p>
+                        <p>With over 15 years in the digital industry, Sarah leads our vision and strategy.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Emily Chen</h3>
+                        <p class="member-role">Creative Director</p>
+                        <p>Emily brings innovative design solutions and creative strategies to our clients.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Michael Rodriguez</h3>
+                        <p class="member-role">Technical Lead</p>
+                        <p>Michael oversees our development team and ensures technical excellence.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Jessica Williams</h3>
+                        <p class="member-role">Marketing Director</p>
+                        <p>Jessica develops data-driven marketing strategies that deliver results.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Clients Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Client Retention</p>
+                </div>
+                <div class="stat-item">
+                    <h3>250+</h3>
+                    <p>Projects Completed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Work With Us?</h2>
+            <p>Join hundreds of satisfied clients who have transformed their business with our digital solutions.</p>
+            <a href="contact.html" class="btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-        <video autoplay muted loop class="video-background">
-            <source src="images/ai.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="overlay"></div>
-        
         <div class="footer-content">
             <div class="footer-column">
-                <h3>welfix</h3>
-                
+                <h3>Welfix</h3>
                 <p>Transforming businesses through innovative digital solutions. We provide cutting-edge services to help you thrive in the digital age.</p>
-                
-                <a href="index.html" class="logo">
-    <img src="images/welfix transparent.png" alt="Welfiix Logo" class="logo-image">
-
-
-</a><div class="social-links">
+                <div class="footer-social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1068,33 +835,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="our services.html"><i class="fas fa-laptop-code"></i> Our Services</a></li>
-                    <li><a href="about us.html"><i class="fas fa-users"></i> About Us</a></li>
+                    <li><a href="our-services.html"><i class="fas fa-laptop-code"></i> Our Services</a></li>
+                    <li><a href="about-us.html"><i class="fas fa-users"></i> About Us</a></li>
                 </ul>
             </div>
             
-             <div class="footer-column">
-    <h3>Our Services</h3>
-    <ul class="footer-links">
-        <li><a href="Our services.html#web-design"><i class="fas fa-paint-brush"></i> Web Design</a></li>
-        <li><a href="our services.html#qr-codes"><i class="fas fa-qrcode"></i> QR Solutions</a></li>
-        <li><a href="our services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
-        <li><a href="our services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
-        <li><a href="our services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
-        <li><a href="our services.html#business-consulting"><i class="fas fa-chart-line"></i> Business Consulting</a></li>
-        <li><a href="our services.html#growth-solutions"><i class="fas fa-rocket"></i> Growth Solutions</a></li>
-    </ul>
-</div>
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul class="footer-links">
+                    <li><a href="our-services.html#web-design"><i class="fas fa-paint-brush"></i> Web Design</a></li>
+                    <li><a href="our-services.html#qr-codes"><i class="fas fa-qrcode"></i> QR Solutions</a></li>
+                    <li><a href="our-services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
+                    <li><a href="our-services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
+                    <li><a href="our-services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
+                </ul>
+            </div>
             
             <div class="footer-column">
                 <h3>Contact Info</h3>
                 <ul class="contact-info">
                     <li><i class="fas fa-map-marker-alt"></i> KG 282 st Kigali - Gasabo</li>
                     <li><i class="fas fa-phone"></i> +250-787-011-730</li>
-                    <li><i class="fas fa-envelope"></i> gylainmuv@gmail.com</li>
+                    <li><i class="fas fa-envelope"></i> info@welfix.com</li>
                     <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
                 </ul>
-
 
                 <h3>Newsletter</h3>
                 <p>Subscribe for updates and offers</p>
@@ -1106,39 +870,45 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 welfix. All Rights Reserved.</p>
+            <p>&copy; 2025 Welfix. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Add intersection observer for animation
+        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const footerColumns = document.querySelectorAll('.footer-column');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuBtn = document.getElementById('closeMenu');
+            const navLinks = document.getElementById('navLinks');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.visibility = 'visible';
-                    }
+            // Toggle mobile menu
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.add('active');
                 });
-            }, { threshold: 0.1 });
+            }
             
-            footerColumns.forEach(column => {
-                column.style.visibility = 'hidden';
-                observer.observe(column);
+            // Close mobile menu
+            if (closeMenuBtn && navLinks) {
+                closeMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                });
+            }
+            
+            // Close menu when clicking on links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && e.target !== mobileMenuBtn) {
+                    navLinks.classList.remove('active');
+                }
             });
         });
     </script>
-
-    <button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
-    <i class="fas fa-bars"></i>
-</button>
 </body>
 </html>
-</body>
-
-</html>
-
-
-
-
