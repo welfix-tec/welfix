@@ -1,10 +1,9 @@
-    
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | DigitalEdge</title>
+    <title>Our Services | Welfix</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
@@ -23,6 +22,9 @@
             --dark: #212529;
             --success: #4cc9f0;
             --warning: #f9c74f;
+            --ai-color: #7209b7;
+            --consulting-color: #f8961e;
+            --growth-color: #43aa8b;
         }
         
         body {
@@ -35,6 +37,7 @@
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         .btn {
@@ -86,99 +89,106 @@
             margin: 0 auto;
         }
         
-       /* Header styling - set a fixed height */
-header {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 0; /* Remove vertical padding */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 70px; /* Set a fixed height for the header */
-    display: flex;
-    align-items: center; /* Vertically center content */
-}
+        /* Header styling */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
 
-/* Container within header */
-header .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
 
-/* Nav styling */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%; /* Take full height of header */
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 100%;
+        }
 
-/* Logo styling - increase size without affecting layout */
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    height: 100%; /* Take full height of nav */
-}
+        .logo-image {
+            height: 50px;
+            width: auto;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
 
-.logo-image {
-    height: 200px; /* Increased size - adjust as needed */
-    width: auto;
-    transition: all 0.3s ease;
-    object-fit: contain; /* Ensure image maintains aspect ratio */
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            align-items: center;
+        }
 
-/* Optional: if you have text next to the logo */
-.logo-text {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #333;
-    margin-left: 10px;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
 
-/* Navigation links */
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-    height: 100%; /* Take full height of nav */
-    align-items: center; /* Vertically center links */
-}
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-    padding: 5px 0; /* Add some vertical padding for better click area */
-}
+        .nav-links .btn {
+            padding: 10px 20px;
+        }
 
-.nav-links a:hover {
-    color: #4361ee;
-}
+        /* Mobile menu styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
 
-/* Get Started button */
-.nav-links .btn {
-    padding: 10px 20px;
-    background: #4361ee;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
 
-.nav-links .btn:hover {
-    background: #3a0ca3;
-    transform: translateY(-2px);
-}
+        .mobile-menu.active {
+            display: block;
+        }
 
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            padding: 20px;
+            gap: 15px;
+            height: auto;
+        }
 
-        /* Hero Section */
+        .mobile-menu .nav-links a {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+        }
+        
+        /* Services Hero Section */
         .services-hero {
             padding: 150px 0 100px;
             background: linear-gradient(135deg, rgba(67, 97, 238, 0.9) 0%, rgba(58, 12, 163, 0.9) 100%), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
@@ -206,7 +216,7 @@ nav {
             padding: 20px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
-            top: 80px;
+            top: 70px;
             z-index: 999;
         }
         
@@ -215,6 +225,7 @@ nav {
             justify-content: center;
             list-style: none;
             flex-wrap: wrap;
+            gap: 15px;
         }
         
         .service-nav-links li {
@@ -313,10 +324,61 @@ nav {
             display: block;
         }
         
+        /* AI Section Styling */
+        #ai-solutions .btn {
+            background: var(--ai-color);
+        }
+
+        #ai-solutions .btn:hover {
+            background: #5a0890;
+        }
+
+        #ai-solutions h2 {
+            color: var(--ai-color);
+        }
+
+        #ai-solutions h3 {
+            color: var(--ai-color);
+        }
+
+        /* Business Consulting Section Styling */
+        #business-consulting .btn {
+            background: var(--consulting-color);
+        }
+
+        #business-consulting .btn:hover {
+            background: #dc8518;
+        }
+
+        #business-consulting h2 {
+            color: var(--consulting-color);
+        }
+
+        #business-consulting h3 {
+            color: var(--consulting-color);
+        }
+
+        /* Growth Solutions Section Styling */
+        #growth-solutions .btn {
+            background: var(--growth-color);
+        }
+
+        #growth-solutions .btn:hover {
+            background: #389277;
+        }
+
+        #growth-solutions h2 {
+            color: var(--growth-color);
+        }
+
+        #growth-solutions h3 {
+            color: var(--growth-color);
+        }
+        
         /* Pricing Section */
         .pricing-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -330,11 +392,24 @@ nav {
             text-align: center;
             padding: 40px 30px;
             border: 1px solid #eee;
+            position: relative;
         }
         
         .pricing-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .ai-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--ai-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
         
         .pricing-card h3 {
@@ -391,6 +466,11 @@ nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f1f3f4;
         }
         
         .faq-answer {
@@ -403,6 +483,14 @@ nav {
         .faq-item.active .faq-answer {
             padding: 20px;
             max-height: 200px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
         }
         
         /* CTA Section */
@@ -434,647 +522,6 @@ nav {
             color: var(--secondary);
         }
 
-
-        /* AI-specific color variable */
-:root {
-    --ai-color: #7209b7;
-}
-
-/* AI Section Styling */
-#ai-solutions .btn {
-    background: var(--ai-color);
-}
-
-#ai-solutions .btn:hover {
-    background: #5a0890;
-}
-
-#ai-solutions h2 {
-    color: var(--ai-color);
-}
-
-#ai-solutions h3 {
-    color: var(--ai-color);
-}
-     
-
-
-        /* Business Consulting color variable */
-:root {
-    --consulting-color: #f8961e;
-}
-
-/* Business Consulting Section Styling */
-#business-consulting .btn {
-    background: var(--consulting-color);
-}
-
-#business-consulting .btn:hover {
-    background: #dc8518;
-}
-
-#business-consulting h2 {
-    color: var(--consulting-color);
-}
-
-#business-consulting h3 {
-    color: var(--consulting-color);
-}
-        
-
-/* Growth Solutions color variable */
-:root {
-    --growth-color: #43aa8b;
-}
-
-/* Growth Solutions Section Styling */
-#growth-solutions .btn {
-    background: var(--growth-color);
-}
-
-#growth-solutions .btn:hover {
-    background: #389277;
-}
-
-#growth-solutions h2 {
-    color: var(--growth-color);
-}
-
-#growth-solutions h3 {
-    color: var(--growth-color);
-}
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .service-content {
-                flex-direction: column;
-            }
-            
-            .service-image {
-                order: -1;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .services-hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
-</head>
-<body>
-   <!-- Header with Navigation -->
-        <!-- Header with Navigation -->
-       <header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">
-                <img src="images/welfix transparent.png" alt="Welfiix Logo" class="logo-image">
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="our services.html">Our services</a></li>
-                <li><a href="About us.html">About us</a></li>
-                <li><a href="contact us.html" class="btn">Get Started</a></li>
-            </ul>
-        </nav>
-    </div>
-
-
-<style>
-/* Mobile Responsive Fix */
-@media screen and (max-width: 968px) {
-    /* Hide desktop navigation on mobile */
-    .nav-links {
-        display: none;
-    }
-    
-    /* Show mobile menu button */
-    .mobile-menu-btn {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--primary);
-        cursor: pointer;
-        z-index: 1001;
-    }
-    
-    /* Mobile navigation styling */
-    .mobile-nav {
-        display: flex;
-        justify-content: space-around;
-        padding: 15px 0;
-        background-color: white;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        z-index: 1000;
-        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .mobile-nav a {
-        text-decoration: none;
-        color: #333;
-        font-size: 12px;
-        text-align: center;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .mobile-nav i {
-        font-size: 20px;
-        margin-bottom: 5px;
-        color: var(--primary);
-    }
-    
-    .mobile-nav .cta-button {
-        background: var(--primary);
-        color: white;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-weight: 600;
-    }
-    
-    /* Adjust header for mobile */
-    header {
-        height: 80px;
-        padding: 10px 0;
-    }
-    
-    nav {
-        justify-content: space-between;
-    }
-    
-    .logo-image {
-        height: 50px; /* Smaller logo on mobile */
-    }
-    
-    /* Add padding to content to account for fixed bottom nav */
-    body {
-        padding-bottom: 70px;
-    }
-    
-    /* Service nav adjustments */
-    .service-nav {
-        top: 80px; /* Adjusted for smaller header */
-    }
-    
-    .service-nav-links {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px 0;
-    }
-    
-    .service-nav-links li {
-        margin: 5px 0;
-    }
-}
-
-/* For larger mobile devices */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .mobile-nav {
-        display: none;
-    }
-    
-    .nav-links {
-        display: flex;
-    }
-    
-    .logo-image {
-        height: 150px;
-    }
-}
-
-/* Very small devices */
-@media screen and (max-width: 480px) {
-    .logo-image {
-        height: 40px;
-    }
-    
-    .mobile-nav a {
-        font-size: 10px;
-    }
-    
-    .mobile-nav i {
-        font-size: 18px;
-    }
-}
-</style>
-
-<!-- Add this mobile menu button to your header -->
-<button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
-    <i class="fas fa-bars"></i>
-</button>
-
-<script>
-// Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // Toggle mobile menu
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-    }
-    
-    // Show/hide mobile menu button based on screen size
-    function checkScreenSize() {
-        if (window.innerWidth <= 968) {
-            mobileMenuBtn.style.display = 'block';
-            navLinks.style.display = 'none';
-        } else {
-            mobileMenuBtn.style.display = 'none';
-            navLinks.style.display = 'flex';
-        }
-    }
-    
-    // Initial check
-    checkScreenSize();
-    
-    // Check on resize
-    window.addEventListener('resize', checkScreenSize);
-});
-</script>
-</header>
-
-    <!-- Services Hero Section -->
-    <section class="services-hero">
-        <div class="container">
-            <h1>Our Professional Services</h1>
-            <p>Discover how our comprehensive digital solutions can transform your business and drive growth in the digital age.</p>
-            <a href="#web-design" class="btn">Explore Our Services</a>
-        </div>
-    </section>
-
-    <!-- Service Navigation -->
-    <div class="service-nav">
-        <div class="container">
-            <ul class="service-nav-links">
-                <li><a href="#web-design">Web Design</a></li>
-                <li><a href="#ai-solutions">AI Solutions</a></li>
-                <li><a href="#qr-codes">QR Solutions</a></li>
-                <li><a href="#social-media">Social Media</a></li>
-                <li><a href="#blog-posting">Blog Posting</a></li>
-                <li><a href="#business-consulting">Business Consulting</a></li>
-                <li><a href="#growth-solutions">Growth Solutions</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Web Design Service -->
-    <section id="web-design" class="service-section">
-        <div class="container">
-            <div class="service-content">
-                <div class="service-text">
-                    <h2>Web Design & Development</h2>
-                    <p>We create stunning, responsive websites that not only look great but also convert visitors into customers. Our web design process focuses on user experience, performance, and achieving your business goals.</p>
-                    
-                    <h3>Our Web Design Process</h3>
-                    <ul class="service-features">
-                        <li>Comprehensive discovery and strategy session</li>
-                        <li>Custom UI/UX design tailored to your audience</li>
-                        <li>Responsive development that works on all devices</li>
-                        <li>SEO optimization to help you rank higher</li>
-                        <li>Thorough testing and quality assurance</li>
-                        <li>Training and ongoing support</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn">Start Your Project</a>
-                </div>
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Web Design Service">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- AI Solutions Service -->
-<section id="ai-solutions" class="service-section">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-text">
-                <h2>AI Solutions & Automation</h2>
-                <p>Leverage the power of artificial intelligence to transform your business operations. Our AI solutions help you automate processes, gain insights from data, and deliver personalized experiences to your customers.</p>
-                
-                <h3>Our AI Services</h3>
-                <ul class="service-features">
-                    <li>Custom AI chatbot development for customer service</li>
-                    <li>Predictive analytics and data analysis solutions</li>
-                    <li>Process automation and workflow optimization</li>
-                    <li>Machine learning model development and deployment</li>
-                    <li>Natural language processing (NLP) solutions</li>
-                    <li>AI-powered recommendation engines</li>
-                    <li>Computer vision and image recognition systems</li>
-                    <li>AI integration with existing business systems</li>
-                </ul>
-                
-                <a href="#contact" class="btn">Explore AI Solutions</a>
-            </div>
-            <div class="service-image">
-                <img src="https://images.pexels.com/photos/3872166/pexels-photo-3872166.jpeg" alt="AI Solutions Service">
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- QR Code Service -->
-    <section id="qr-codes" class="service-section">
-        <div class="container">
-            <div class="service-content">
-                <div class="service-image">
-                    <img src="https://images.pexels.com/photos/278430/pexels-photo-278430.jpeg" alt="QR Code Service">
-                </div>
-                <div class="service-text">
-                    <h2>QR Code Solutions</h2>
-                    <p>Leverage the power of QR codes to bridge the gap between physical and digital experiences. Our dynamic QR solutions help you engage customers, share information, and track marketing performance.</p>
-                    
-                    <h3>QR Code Applications</h3>
-                    <ul class="service-features">
-                        <li>Dynamic QR codes with editable destinations</li>
-                        <li>Custom designed QR codes that match your brand</li>
-                        <li>QR code tracking and analytics</li>
-                        <li>Restaurant menus and contactless ordering</li>
-                        <li>Product information and promotions</li>
-                        <li>Event registration and ticketing</li>
-                        <li>Payment processing solutions</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn">Get QR Solutions</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Media Service -->
-    <section id="social-media" class="service-section">
-        <div class="container">
-            <div class="service-content">
-                <div class="service-text">
-                    <h2>Social Media Management</h2>
-                    <p>Transform your social media presence with our comprehensive management services. We develop data-driven strategies that increase engagement, grow your audience, and drive conversions.</p>
-                    
-                    <h3>Our Social Media Services</h3>
-                    <ul class="service-features">
-                        <li>Social media strategy development</li>
-                        <li>Content creation and curation</li>
-                        <li>Community management and engagement</li>
-                        <li>Paid social media advertising campaigns</li>
-                        <li>Performance tracking and analytics reporting</li>
-                        <li>Competitor analysis and industry benchmarking</li>
-                        <li>Influencer partnership programs</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn">Boost Your Social Presence</a>
-                </div>
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Social Media Service">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Posting Service -->
-    <section id="blog-posting" class="service-section">
-        <div class="container">
-            <div class="service-content">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Blog Posting Service">
-                </div>
-                <div class="service-text">
-                    <h2>Blog Posting & Content Creation</h2>
-                    <p>Establish your brand as an industry authority with our professional content creation services. We develop engaging, SEO-optimized content that resonates with your audience and drives organic traffic.</p>
-                    
-                    <h3>Content Services</h3>
-                    <ul class="service-features">
-                        <li>Blog post writing and publishing</li>
-                        <li>SEO optimization and keyword strategy</li>
-                        <li>Content calendar development</li>
-                        <li>Article research and interviewing</li>
-                        <li>Copywriting for websites and marketing materials</li>
-                        <li>Email newsletter content</li>
-                        <li>Case studies and white papers</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn">Create Amazing Content</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Business Consulting Service -->
-<section id="business-consulting" class="service-section">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Business Consulting Service">
-            </div>
-            <div class="service-text">
-                <h2>Business Consulting & Strategy</h2>
-                <p>Our expert consultants provide strategic guidance to help your business grow, optimize operations, and maximize profitability. We analyze your business challenges and opportunities to develop tailored solutions that drive success.</p>
-                
-                <h3>Our Consulting Services</h3>
-                <ul class="service-features">
-                    <li>Business strategy development and planning</li>
-                    <li>Market research and competitive analysis</li>
-                    <li>Operational efficiency optimization</li>
-                    <li>Digital transformation roadmap development</li>
-                    <li>Financial modeling and business forecasting</li>
-                    <li>Organizational structure assessment</li>
-                    <li>Change management implementation</li>
-                    <li>Performance measurement and KPI development</li>
-                </ul>
-                
-                <a href="#contact" class="btn">Schedule Consultation</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Growth Solutions Service -->
-<section id="growth-solutions" class="service-section">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-text">
-                <h2>Growth Solutions & Marketing</h2>
-                <p>Accelerate your business growth with our data-driven marketing strategies and growth hacking techniques. We help you acquire more customers, increase revenue, and scale your business effectively.</p>
-                
-                <h3>Our Growth Services</h3>
-                <ul class="service-features">
-                    <li>Growth strategy development and implementation</li>
-                    <li>Customer acquisition and retention programs</li>
-                    <li>Conversion rate optimization (CRO)</li>
-                    <li>Marketing funnel development and optimization</li>
-                    <li>Email marketing automation campaigns</li>
-                    <li>Performance marketing and paid advertising</li>
-                    <li>A/B testing and experimentation framework</li>
-                    <li>Growth metrics tracking and analytics</li>
-                </ul>
-                
-                <a href="#contact" class="btn">Accelerate Growth</a>
-            </div>
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Growth Solutions Service">
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="service-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Transparent Pricing</h2>
-                <p>Choose the package that best fits your needs. All plans include our commitment to quality and results.</p>
-            </div>
-            
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="price">$299<span>/month</span></div>
-                    <p>Perfect for small businesses getting started</p>
-                    <ul class="pricing-features">
-                        <li>5-page website</li>
-                        <li>Basic SEO setup</li>
-                        <li>10 social media posts/month</li>
-                        <li>2 blog articles/month</li>
-                        <li>Email support</li>
-                    </ul>
-                    <a href="#contact" class="btn">Get Started</a>
-                </div>
-                
-                <div class="pricing-card">
-                    <h3>Professional</h3>
-                    <div class="price">$699<span>/month</span></div>
-                    <p>Ideal for growing businesses</p>
-                    <ul class="pricing-features">
-                        <li>10-page website</li>
-                        <li>Advanced SEO</li>
-                        <li>20 social media posts/month</li>
-                        <li>4 blog articles/month</li>
-                        <li>QR code integration</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="#contact" class="btn">Get Started</a>
-                </div>
-
-
-                <div class="pricing-card">
-    <div class="ai-badge">AI Powered</div>
-    <h3>AI Solutions</h3>
-    <div class="price">Custom<span>/project</span></div>
-    <p>Intelligent automation for your business</p>
-    <ul class="pricing-features">
-        <li>Custom AI solution development</li>
-        <li>Data analysis & insights</li>
-        <li>Process automation setup</li>
-        <li>AI chatbot implementation</li>
-        <li>Integration with existing systems</li>
-        <li>Ongoing maintenance & updates</li>
-    </ul>
-    <a href="#contact" class="btn">Request Consultation</a>
-</div>
-                
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">$1299<span>/month</span></div>
-                    <p>For established businesses needing full service</p>
-                    <ul class="pricing-features">
-                        <li>Unlimited pages website</li>
-                        <li>Comprehensive SEO strategy</li>
-                        <li>Daily social media management</li>
-                        <li>8 blog articles/month</li>
-                        <li>Custom QR solutions</li>
-                        <li>24/7 dedicated support</li>
-                        <li>Monthly performance reports</li>
-                    </ul>
-                    <a href="#contact" class="btn">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="service-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about our services and processes.</p>
-            </div>
-            
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">How long does it take to complete a website project? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">The timeline for a website project typically ranges from 4-8 weeks, depending on the complexity of the project, the number of pages, and the responsiveness of the client in providing content and feedback.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Do you offer ongoing support after project completion? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">Yes, we offer various ongoing support and maintenance packages to ensure your website remains up-to-date, secure, and continues to perform optimally after launch.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Can I update my website content myself? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">Absolutely! We build websites with user-friendly content management systems that allow you to easily update content, add blog posts, and make other changes without technical knowledge.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do you measure the success of social media campaigns? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">We use a variety of metrics including engagement rate, follower growth, website traffic from social media, conversion rates, and ROI. We provide monthly reports with detailed analytics.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Transform Your Digital Presence?</h2>
-            <p>Contact us today for a free consultation and let's discuss how we can help you achieve your digital goals.</p>
-            <a href="#contact" class="btn">Get Started Today</a>
-        </div>
-    </section>
-
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Footer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .main-content {
-            flex: 1;
-            padding: 40px;
-            text-align: center;
-        }
-        
         /* Footer Styles */
         .footer {
             position: relative;
@@ -1108,16 +555,9 @@ document.addEventListener('DOMContentLoaded', function() {
             max-width: 1200px;
             margin: 0 auto;
             padding: 50px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 30px;
-            padding: 0 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         
         .footer-column h3 {
@@ -1236,141 +676,306 @@ document.addEventListener('DOMContentLoaded', function() {
             background: rgba(0, 0, 0, 0.4);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        /* Animation for elements */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .footer-column {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        .footer-column:nth-child(1) { animation-delay: 0.1s; }
-        .footer-column:nth-child(2) { animation-delay: 0.2s; }
-        .footer-column:nth-child(3) { animation-delay: 0.3s; }
-        .footer-column:nth-child(4) { animation-delay: 0.4s; }
-        
+
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
+        @media (max-width: 1024px) {
+            .service-content {
+                gap: 30px;
             }
             
-            .footer-column {
-                min-width: 100%;
+            .services-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-text h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .service-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .service-image {
+                order: -1;
+            }
+            
+            .services-hero {
+                padding: 120px 0 80px;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-text h2 {
+                font-size: 2rem;
+            }
+            
+            .service-nav-links {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .service-nav-links::-webkit-scrollbar {
+                height: 4px;
+            }
+            
+            .service-nav-links::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 2px;
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 4px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .services-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .services-hero p {
+                font-size: 1rem;
+            }
+            
+            .service-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .pricing-card {
+                padding: 30px 20px;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
             }
         }
     </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="welfix logo 200x60px.png" alt="Welfix Logo" class="logo-image">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="our services.html">Our services</a></li>
+                    <li><a href="About us.html">About us</a></li>
+                    <li><a href="contact us.html" class="btn">Get Started</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="our services.html">Our services</a></li>
+                    <li><a href="About us.html">About us</a></li>
+                    <li><a href="contact us.html" class="btn">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Professional Services</h1>
+            <p>Discover how our comprehensive digital solutions can transform your business and drive growth in the digital age.</p>
+            <a href="#web-design" class="btn">Explore Our Services</a>
+        </div>
+    </section>
 
-    <footer class="footer">
-        <video autoplay muted loop class="video-background">
-            <source src="images/ai.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="overlay"></div>
-        
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>welfix</h3>
-                <p>Transforming businesses through innovative digital solutions. We provide cutting-edge services to help you thrive in the digital age.</p>
-               
-                <img src="images/welfix transparent.png" alt="Welfiix Logo" class="logo-image">
+    <!-- Service Navigation -->
+    <div class="service-nav">
+        <div class="container">
+            <ul class="service-nav-links">
+                <li><a href="#web-design">Web Design</a></li>
+                <li><a href="#ai-solutions">AI Solutions</a></li>
+                <li><a href="#qr-codes">QR Solutions</a></li>
+                <li><a href="#social-media">Social Media</a></li>
+                <li><a href="#blog-posting">Blog Posting</a></li>
+                <li><a href="#business-consulting">Business Consulting</a></li>
+                <li><a href="#growth-solutions">Growth Solutions</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
 
-             
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Web Design Service -->
+    <section id="web-design" class="service-section">
+        <div class="container">
+            <div class="service-content">
+                <div class="service-text">
+                    <h2>Web Design & Development</h2>
+                    <p>We create stunning, responsive websites that not only look great but also convert visitors into customers. Our web design process focuses on user experience, performance, and achieving your business goals.</p>
+                    
+                    <h3>Our Web Design Process</h3>
+                    <ul class="service-features">
+                        <li>Comprehensive discovery and strategy session</li>
+                        <li>Custom UI/UX design tailored to your audience</li>
+                        <li>Responsive development that works on all devices</li>
+                        <li>SEO optimization to help you rank higher</li>
+                        <li>Thorough testing and quality assurance</li>
+                        <li>Training and ongoing support</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn">Start Your Project</a>
+                </div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Web Design Service">
                 </div>
             </div>
-            
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="our services.html"><i class="fas fa-laptop-code"></i> Our Services</a></li>
-                    <li><a href="about us.html"><i class="fas fa-users"></i> About Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-    <h3>Our Services</h3>
-    <ul class="footer-links">
-        <li><a href="Our services.html#web-design"><i class="fas fa-paint-brush"></i> Web Design</a></li>
-        <li><a href="our services.html#qr-codes"><i class="fas fa-qrcode"></i> QR Solutions</a></li>
-        <li><a href="our services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
-        <li><a href="our services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
-        <li><a href="our services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
-        <li><a href="our services.html#business-consulting"><i class="fas fa-chart-line"></i> Business Consulting</a></li>
-        <li><a href="our services.html#growth-solutions"><i class="fas fa-rocket"></i> Growth Solutions</a></li>
-    </ul>
-</div>
-            
-            <div class="footer-column">
-                <h3>Contact Info</h3>
-                <ul class="contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i> KG 282 st Kigali - Gasabo</li>
-                    <li><i class="fas fa-phone"></i> +250-787-011-730</li>
-                    <li><i class="fas fa-envelope"></i> gylainmuv@gmail.com</li>
-                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
-                </ul>
-                
-                <h3>Newsletter</h3>
-                <p>Subscribe for updates and offers</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address">
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
+        </div>
+    </section>
+
+    <!-- AI Solutions Service -->
+    <section id="ai-solutions" class="service-section">
+        <div class="container">
+            <div class="service-content">
+                <div class="service-text">
+                    <h2>AI Solutions & Automation</h2>
+                    <p>Leverage the power of artificial intelligence to transform your business operations. Our AI solutions help you automate processes, gain insights from data, and deliver personalized experiences to your customers.</p>
+                    
+                    <h3>Our AI Services</h3>
+                    <ul class="service-features">
+                        <li>Custom AI chatbot development for customer service</li>
+                        <li>Predictive analytics and data analysis solutions</li>
+                        <li>Process automation and workflow optimization</li>
+                        <li>Machine learning model development and deployment</li>
+                        <li>Natural language processing (NLP) solutions</li>
+                        <li>AI-powered recommendation engines</li>
+                        <li>Computer vision and image recognition systems</li>
+                        <li>AI integration with existing business systems</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn">Explore AI Solutions</a>
+                </div>
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/3872166/pexels-photo-3872166.jpeg" alt="AI Solutions Service">
+                </div>
             </div>
         </div>
-        
-        <div class="copyright">
-            <p>&copy; 2025 welfix. All Rights Reserved.</p>
+    </section>
+
+    <!-- QR Code Service -->
+    <section id="qr-codes" class="service-section">
+        <div class="container">
+            <div class="service-content">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/278430/pexels-photo-278430.jpeg" alt="QR Code Service">
+                </div>
+                <div class="service-text">
+                    <h2>QR Code Solutions</h2>
+                    <p>Leverage the power of QR codes to bridge the gap between physical and digital experiences. Our dynamic QR solutions help you engage customers, share information, and track marketing performance.</p>
+                    
+                    <h3>QR Code Applications</h3>
+                    <ul class="service-features">
+                        <li>Dynamic QR codes with editable destinations</li>
+                        <li>Custom designed QR codes that match your brand</li>
+                        <li>QR code tracking and analytics</li>
+                        <li>Restaurant menus and contactless ordering</li>
+                        <li>Product information and promotions</li>
+                        <li>Event registration and ticketing</li>
+                        <li>Payment processing solutions</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn">Get QR Solutions</a>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // Add intersection observer for animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const footerColumns = document.querySelectorAll('.footer-column');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.visibility = 'visible';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            footerColumns.forEach(column => {
-                column.style.visibility = 'hidden';
-                observer.observe(column);
-            });
-        });
-    </script>
+    <!-- Social Media Service -->
+    <section id="social-media" class="service-section">
+        <div class="container">
+            <div class="service-content">
+                <div class="service-text">
+                    <h2>Social Media Management</h2>
+                    <p>Transform your social media presence with our comprehensive management services. We develop data-driven strategies that increase engagement, grow your audience, and drive conversions.</p>
+                    
+                    <h3>Our Social Media Services</h3>
+                    <ul class="service-features">
+                        <li>Social media strategy development</li>
+                        <li>Content creation and curation</li>
+                        <li>Community management and engagement</li>
+                        <li>Paid social media advertising campaigns</li>
+                        <li>Performance tracking and analytics reporting</li>
+                        <li>Competitor analysis and industry benchmarking</li>
+                        <li>Influencer partnership programs</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn">Boost Your Social Presence</a>
+                </div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Social Media Service">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
-    <i class="fas fa-bars"></i>
-</button>
-</body>
-</html>
-   
-</body>
-
-</html>
-
-
-
-
-
-
+    <!-- Blog Posting Service -->
+    <section id="blog-posting" class="service-section">
+        <div class="container">
+            <div class="service-content">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Blog Posting Service">
+                </div>
+                <div class="service-text">
+                    <h2>Blog Posting & Content Creation</h2>
