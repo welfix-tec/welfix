@@ -108,6 +108,7 @@
             align-items: center;
             height: 100%;
             width: 100%;
+            position: relative;
         }
 
         .logo {
@@ -158,17 +159,20 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--dark);
+            z-index: 1001;
         }
 
         .mobile-menu {
             display: none;
-            position: absolute;
-            top: 100%;
+            position: fixed;
+            top: 70px;
             left: 0;
             width: 100%;
+            height: calc(100vh - 70px);
             background: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 999;
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
@@ -178,14 +182,26 @@
         .mobile-menu .nav-links {
             flex-direction: column;
             padding: 20px;
-            gap: 15px;
+            gap: 0;
             height: auto;
+            align-items: flex-start;
+        }
+
+        .mobile-menu .nav-links li {
+            width: 100%;
         }
 
         .mobile-menu .nav-links a {
-            padding: 10px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
             width: 100%;
+            display: block;
+        }
+
+        .mobile-menu .nav-links .btn {
+            margin-top: 10px;
+            display: inline-block;
+            width: auto;
         }
         
         /* Services Hero Section */
@@ -478,6 +494,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
+            background: white;
         }
         
         .faq-item.active .faq-answer {
@@ -558,6 +575,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
+        }
+        
+        .footer-column {
+            animation: fadeInUp 0.6s ease forwards;
         }
         
         .footer-column h3 {
@@ -677,6 +698,23 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Animation for elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer-column:nth-child(1) { animation-delay: 0.1s; }
+        .footer-column:nth-child(2) { animation-delay: 0.2s; }
+        .footer-column:nth-child(3) { animation-delay: 0.3s; }
+        .footer-column:nth-child(4) { animation-delay: 0.4s; }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .service-content {
@@ -758,11 +796,6 @@
             .newsletter-form button {
                 border-radius: 4px;
             }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -800,6 +833,11 @@
             
             .cta h2 {
                 font-size: 2rem;
+            }
+
+            .service-nav-links li {
+                margin: 0 5px;
+                white-space: nowrap;
             }
         }
     </style>
@@ -852,8 +890,6 @@
                 <li><a href="#qr-codes">QR Solutions</a></li>
                 <li><a href="#social-media">Social Media</a></li>
                 <li><a href="#blog-posting">Blog Posting</a></li>
-                
-    
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </div>
@@ -972,7 +1008,6 @@
     </section>
 
     <!-- Blog Posting Service -->
-
     <section id="blog-posting" class="service-section">
         <div class="container">
             <div class="service-content">
@@ -1001,33 +1036,33 @@
     </section>
 
     <!-- Business Consulting Service -->
-<section id="business-consulting" class="service-section">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Business Consulting Service">
-            </div>
-            <div class="service-text">
-                <h2>Business Consulting & Strategy</h2>
-                <p>Our expert consultants provide strategic guidance to help your business grow, optimize operations, and maximize profitability. We analyze your business challenges and opportunities to develop tailored solutions that drive success.</p>
-                
-                <h3>Our Consulting Services</h3>
-                <ul class="service-features">
-                    <li>Business strategy development and planning</li>
-                    <li>Market research and competitive analysis</li>
-                    <li>Operational efficiency optimization</li>
-                    <li>Digital transformation roadmap development</li>
-                    <li>Financial modeling and business forecasting</li>
-                    <li>Organizational structure assessment</li>
-                    <li>Change management implementation</li>
-                    <li>Performance measurement and KPI development</li>
-                </ul>
-                
-                <a href="contact us.html" class="btn">Schedule Consultation</a>
+    <section id="business-consulting" class="service-section">
+        <div class="container">
+            <div class="service-content">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Business Consulting Service">
+                </div>
+                <div class="service-text">
+                    <h2>Business Consulting & Strategy</h2>
+                    <p>Our expert consultants provide strategic guidance to help your business grow, optimize operations, and maximize profitability. We analyze your business challenges and opportunities to develop tailored solutions that drive success.</p>
+                    
+                    <h3>Our Consulting Services</h3>
+                    <ul class="service-features">
+                        <li>Business strategy development and planning</li>
+                        <li>Market research and competitive analysis</li>
+                        <li>Operational efficiency optimization</li>
+                        <li>Digital transformation roadmap development</li>
+                        <li>Financial modeling and business forecasting</li>
+                        <li>Organizational structure assessment</li>
+                        <li>Change management implementation</li>
+                        <li>Performance measurement and KPI development</li>
+                    </ul>
+                    
+                    <a href="contact us.html" class="btn">Schedule Consultation</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Pricing Section -->
     <section id="pricing" class="service-section">
@@ -1067,22 +1102,21 @@
                     <a href="contact us.html" class="btn">Get Started</a>
                 </div>
 
-
                 <div class="pricing-card">
-    <div class="ai-badge">AI Powered</div>
-    <h3>AI Solutions</h3>
-    <div class="price">Custom<span>/project</span></div>
-    <p>Intelligent automation for your business</p>
-    <ul class="pricing-features">
-        <li>Custom AI solution development</li>
-        <li>Data analysis & insights</li>
-        <li>Process automation setup</li>
-        <li>AI chatbot implementation</li>
-        <li>Integration with existing systems</li>
-        <li>Ongoing maintenance & updates</li>
-    </ul>
-    <a href="contact us.html" class="btn">Request Consultation</a>
-</div>
+                    <div class="ai-badge">AI Powered</div>
+                    <h3>AI Solutions</h3>
+                    <div class="price">Custom<span>/project</span></div>
+                    <p>Intelligent automation for your business</p>
+                    <ul class="pricing-features">
+                        <li>Custom AI solution development</li>
+                        <li>Data analysis & insights</li>
+                        <li>Process automation setup</li>
+                        <li>AI chatbot implementation</li>
+                        <li>Integration with existing systems</li>
+                        <li>Ongoing maintenance & updates</li>
+                    </ul>
+                    <a href="contact us.html" class="btn">Request Consultation</a>
+                </div>
                 
                 <div class="pricing-card">
                     <h3>Enterprise</h3>
@@ -1144,230 +1178,7 @@
         </div>
     </section>
 
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Footer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .main-content {
-            flex: 1;
-            padding: 40px;
-            text-align: center;
-        }
-        
-        /* Footer Styles */
-        .footer {
-            position: relative;
-            width: 100%;
-            min-height: 300px;
-            overflow: hidden;
-            color: white;
-        }
-        
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(58, 12, 163, 0.8));
-            z-index: -1;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 30px;
-            padding: 0 15px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(to right, #4361ee, #f72585);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .footer-links a i {
-            margin-right: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: #4361ee;
-            transform: translateY(-5px);
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 12px;
-            color: #4361ee;
-            font-size: 1.2rem;
-        }
-        
-        .newsletter-form {
-            display: flex;
-            margin-top: 20px;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-        
-        .newsletter-form button {
-            padding: 0 15px;
-            background: #4361ee;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .newsletter-form button:hover {
-            background: #3a0ca3;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Animation for elements */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .footer-column {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        .footer-column:nth-child(1) { animation-delay: 0.1s; }
-        .footer-column:nth-child(2) { animation-delay: 0.2s; }
-        .footer-column:nth-child(3) { animation-delay: 0.3s; }
-        .footer-column:nth-child(4) { animation-delay: 0.4s; }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-            }
-            
-            .footer-column {
-                min-width: 100%;
-            }
-        }
-    </style>
-
-
+    <!-- Footer -->
     <footer class="footer">
         <video autoplay muted loop class="video-background">
             <source src="images/ai.mp4" type="video/mp4">
@@ -1380,8 +1191,7 @@
                 <h3>welfix</h3>
                 <p>Transforming businesses through innovative digital solutions. We provide cutting-edge services to help you thrive in the digital age.</p>
                
-                <img src="images/welfix transparent.png" alt="Welfiix Logo" class="logo-image">
-
+                <img src="images/welfix transparent.png" alt="Welfix Logo" class="logo-image">
              
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1401,18 +1211,16 @@
             </div>
             
             <div class="footer-column">
-    <h3>Our Services</h3>
-    <ul class="footer-links">
-        <li><a href="Our services.html#web-design"><i class="fas fa-paint-brush"></i> Web Design</a></li>
-         <li><a href="our services.html#business-consulting"><i class="fas fa-chart-line"></i> Business Consulting</a></li>
-        <li><a href="our services.html#qr-codes"><i class="fas fa-qrcode"></i> QR Solutions</a></li>
-        <li><a href="our services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
-        <li><a href="our services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
-        <li><a href="our services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
-       
-     
-    </ul>
-</div>
+                <h3>Our Services</h3>
+                <ul class="footer-links">
+                    <li><a href="our services.html#web-design"><i class="fas fa-paint-brush"></i> Web Design</a></li>
+                    <li><a href="our services.html#business-consulting"><i class="fas fa-chart-line"></i> Business Consulting</a></li>
+                    <li><a href="our services.html#qr-codes"><i class="fas fa-qrcode"></i> QR Solutions</a></li>
+                    <li><a href="our services.html#social-media"><i class="fas fa-hashtag"></i> Social Media</a></li>
+                    <li><a href="our services.html#blog-posting"><i class="fas fa-blog"></i> Blog Posting</a></li>
+                    <li><a href="our services.html#ai-solutions"><i class="fas fa-robot"></i> AI Solutions</a></li>
+                </ul>
+            </div>
             
             <div class="footer-column">
                 <h3>Contact Info</h3>
@@ -1438,10 +1246,90 @@
     </footer>
 
     <script>
-        // Add intersection observer for animation
+        // Mobile menu toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const body = document.body;
+
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                
+                // Toggle hamburger icon
+                const icon = this.querySelector('i');
+                if (mobileMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                    body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    body.style.overflow = ''; // Restore scrolling
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    body.style.overflow = '';
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    body.style.overflow = '';
+                }
+            });
+
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+                    
+                    // Close all FAQ items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 160; // Account for sticky headers
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add intersection observer for footer animation
             const footerColumns = document.querySelectorAll('.footer-column');
-            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1451,14 +1339,9 @@
             }, { threshold: 0.1 });
             
             footerColumns.forEach(column => {
-                column.style.visibility = 'hidden';
                 observer.observe(column);
             });
         });
     </script>
 </body>
 </html>
-   
-</body>
-</html>
-
