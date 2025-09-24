@@ -26,6 +26,11 @@
             color: var(--dark);
             line-height: 1.6;
             background-color: #f9fafb;
+            transition: overflow 0.3s ease;
+        }
+        
+        body.menu-open {
+            overflow: hidden;
         }
         
         .container {
@@ -96,6 +101,12 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+        }
+        
+        .logo-image {
+            max-width: 200px;
+            height: auto;
+            width: 100%;
         }
         
         .logo-text {
@@ -543,15 +554,17 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 70%;
+                width: 300px;
                 height: 100vh;
                 background-color: white;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
+                justify-content: flex-start;
+                align-items: flex-start;
                 transition: right 0.3s ease;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
                 gap: 25px;
+                padding: 80px 30px 30px;
+                z-index: 999;
             }
             
             .nav-links.active {
@@ -561,13 +574,14 @@
             /* Close button for mobile menu */
             .close-menu {
                 position: absolute;
-                top: 20px;
-                right: 20px;
+                top: 25px;
+                right: 25px;
                 background: none;
                 border: none;
                 font-size: 1.5rem;
                 color: var(--dark);
                 cursor: pointer;
+                z-index: 1000;
             }
             
             /* Adjust header for mobile */
@@ -581,7 +595,7 @@
             }
             
             .about-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             /* Story section adjustments */
@@ -614,10 +628,20 @@
             .footer-column {
                 min-width: 100%;
             }
+            
+            /* Button adjustments for mobile */
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
         
         @media (min-width: 769px) and (max-width: 1024px) {
             /* Adjust grid layouts for tablet */
+            .container {
+                width: 95%;
+            }
+            
             .values-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -625,23 +649,54 @@
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .story-content {
+                gap: 30px;
+            }
+            
+            .about-hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .story-text h2 {
+                font-size: 2rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
         }
         
         @media (max-width: 480px) {
             .about-hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stat-item h3 {
+                font-size: 2.5rem;
             }
             
             .about-hero p {
                 font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -651,8 +706,7 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo">
-               <img src="welfix logo 200x60px.png" alt="Welfiix Logo" class="logo-image">
-            </a>
+               <img src="welfix logo 200x60px.png" alt="Welfix Logo" class="logo-image">
             </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -898,11 +952,14 @@
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const closeMenuBtn = document.getElementById('closeMenu');
             const navLinks = document.getElementById('navLinks');
+            const body = document.body;
             
             // Toggle mobile menu
             if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', function() {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
                     navLinks.classList.add('active');
+                    body.classList.add('menu-open');
                 });
             }
             
@@ -910,6 +967,7 @@
             if (closeMenuBtn && navLinks) {
                 closeMenuBtn.addEventListener('click', function() {
                     navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
                 });
             }
             
@@ -917,6 +975,7 @@
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
                 });
             });
             
@@ -924,12 +983,26 @@
             document.addEventListener('click', (e) => {
                 if (!navLinks.contains(e.target) && e.target !== mobileMenuBtn) {
                     navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
+            });
+            
+            // Handle window resize - close menu when switching to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 968) {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
                 }
             });
         });
     </script>
 </body>
 </html>
-
-
-
