@@ -864,7 +864,7 @@
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>Email</strong><br>
-                                gylainmuv@gmail.com
+                                welfix.sol@gmail.com
                             </div>
                         </li>
                         <li>
@@ -877,50 +877,181 @@
                     </ul>
                 </div>
                 
-                <!-- Contact Form Section -->
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <select id="service" name="service">
-                                <option value="">Select a service</option>
-                                <option value="web-design">Web Design</option>
-                                <option value="qr-codes">QR Solutions</option>
-                                <option value="social-media">Social Media Management</option>
-                                <option value="blog-posting">Blog Posting</option>
-                                <option value="ai-solutions">AI Solutions</option>
-                                <option value="business-consulting">Business Consulting</option>
-                                <option value="growth-solutions">Growth Solutions</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Project Details *</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+              <body>
+    <div class="contact-container">
+        <div class="contact-header">
+            <h2>Get In Touch With Welfix</h2>
+            <p>We'd love to hear about your project. Send us a message and we'll respond within 24 hours.</p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Why Choose Welfix?</h3>
+                
+                <div class="info-item">
+                    <i class="fas fa-rocket"></i>
+                    <div class="info-text">
+                        <h4>Digital Transformation</h4>
+                        <p>We help businesses thrive in the digital space with cutting-edge solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-cogs"></i>
+                    <div class="info-text">
+                        <h4>Comprehensive Services</h4>
+                        <p>From web design to AI solutions, we offer everything your business needs.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-users"></i>
+                    <div class="info-text">
+                        <h4>Expert Team</h4>
+                        <p>Our skilled professionals are dedicated to delivering exceptional results.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-headset"></i>
+                    <div class="info-text">
+                        <h4>Ongoing Support</h4>
+                        <p>We provide continuous support to ensure your digital success.</p>
+                    </div>
                 </div>
             </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm" action="https://formspree.io/f/mvgwgepj" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="required">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="web-design">Web Design</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="content-creation">Content Creation & Blog Posting</option>
+                            <option value="ai-solutions">AI Solutions</option>
+                            <option value="business-consulting">Business Consulting</option>
+                            <option value="growth-solutions">Growth Solutions</option>
+                            <option value="multiple">Multiple Services</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="required">Project Details</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project, goals, and timeline..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            const formMessage = document.getElementById('formMessage');
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simple form validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !message) {
+                showMessage('Please fill in all required fields.', 'error');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', 'error');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Using Formspree to handle form submission
+            const formData = new FormData(this);
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.', 'success');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    response.json().then(data => {
+                        if (data.error) {
+                            throw new Error(data.error);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('Sorry, there was an error sending your message. Please try again later or email us directly at welfix.sol@gmail.com.', 'error');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+        
+        function showMessage(text, type) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.textContent = text;
+            formMessage.className = 'form-message ' + type;
+            formMessage.style.display = 'block';
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
 
     <!-- WhatsApp Section -->
     <div class="whatsapp-section">
@@ -1138,4 +1269,5 @@
     </script>
 </body>
 </html>
+
 
