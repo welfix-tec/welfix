@@ -840,6 +840,470 @@
                 white-space: nowrap;
             }
         }
+
+        /* FANCY AUTO-COLOR-CHANGING CHATBOT STYLES */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite, float 6s ease-in-out infinite;
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite, pulse 2s infinite, float 6s ease-in-out infinite;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .chatbot-toggle i {
+            color: white;
+            font-size: 28px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .chatbot-toggle .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f72585, #b5179e);
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Chatbot Container Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 110px;
+            right: 25px;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .chatbot-container.active {
+            display: flex;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4); }
+            50% { box-shadow: 0 8px 30px rgba(67, 97, 238, 0.7); }
+            100% { box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .chat-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-avatar {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 22px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .chat-title h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .chat-title p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .chat-close {
+            background: rgba(255, 255, 255, 0.2);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .chat-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            margin-bottom: 15px;
+            border-radius: 18px;
+            line-height: 1.4;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot-message {
+            background: white;
+            border-bottom-left-radius: 5px;
+            align-self: flex-start;
+            border: 1px solid #e0e0e0;
+            animation-delay: 0.1s;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            border-bottom-right-radius: 5px;
+            align-self: flex-end;
+            animation-delay: 0.1s;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-reply {
+            background: white;
+            border: 1px solid #4361ee;
+            color: #4361ee;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .quick-reply:hover {
+            background: #4361ee;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.3);
+        }
+
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-size: 0.85rem;
+        }
+
+        .option:hover {
+            background: #f5f5f5;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-option:hover {
+            background: #f5f5f5;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            color: #4361ee;
+        }
+
+        .chat-footer {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid #e0e0e0;
+            border-radius: 25px;
+            outline: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .message-input:focus {
+            border-color: #4361ee;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            background: white;
+        }
+
+        .send-button {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .send-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+            animation: slideUp 0.4s ease-out;
+            border: 1px solid #e0e0e0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #546e7a;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #4361ee;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            background: white;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .services-grid-chat {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .service-card-chat {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+        }
+
+        .service-card-chat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon-chat {
+            font-size: 1.8rem;
+            color: #4361ee;
+            margin-bottom: 10px;
+        }
+
+        .service-name-chat {
+            font-weight: 600;
+            color: #37474f;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+        }
+
+        .service-desc-chat {
+            font-size: 0.75rem;
+            color: #546e7a;
+        }
+
+        /* Responsive Design for Chatbot */
+        @media (max-width: 480px) {
+            .chatbot-container {
+                width: 90vw;
+                height: 70vh;
+                right: 5vw;
+                bottom: 90px;
+            }
+            
+            .chatbot-toggle {
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .chatbot-toggle i {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -956,7 +1420,7 @@
         <div class="container">
             <div class="service-content">
                 <div class="service-image">
-                    <img src="https://images.pexels.com/photos/278430/pexels-photo-278430.jpeg" alt="QR Code Service">
+                    <img src="https://images.pexels.com/photos-278430/pexels-photo-278430.jpeg" alt="QR Code Service">
                 </div>
                 <div class="service-text">
                     <h2>QR Code Solutions</h2>
@@ -1249,6 +1713,47 @@
         </div>
     </footer>
 
+    <!-- Fancy Auto-Color-Changing Chatbot -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+        <div class="notification">1</div>
+    </div>
+
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chat-title">
+                    <h2>Welfix Assistant</h2>
+                    <p>Always active to help you</p>
+                </div>
+            </div>
+            <div class="chat-close" id="chatClose">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            <div class="message bot-message">
+                <p>Hello! I'm Welfix Assistant, your 24/7 digital solutions partner. How can I help you today?</p>
+                <div class="quick-replies">
+                    <div class="quick-reply" onclick="handleQuickReply('services')">Our Services</div>
+                    <div class="quick-reply" onclick="handleQuickReply('contact')">Contact Us</div>
+                    <div class="quick-reply" onclick="handleQuickReply('pricing')">Pricing</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message here...">
+            <button class="send-button" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
@@ -1346,8 +1851,368 @@
                 observer.observe(column);
             });
         });
+
+        // FANCY AUTO-COLOR-CHANGING CHATBOT FUNCTIONALITY
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const chatClose = document.getElementById('chatClose');
+        const chatBody = document.getElementById('chatBody');
+        const messageInput = document.getElementById('messageInput');
+        
+        // Color schemes for auto-changing
+        const colorSchemes = [
+            { primary: '#4361ee', secondary: '#3a0ca3', accent: '#f72585' },
+            { primary: '#7209b7', secondary: '#560bad', accent: '#b5179e' },
+            { primary: '#f8961e', secondary: '#dc8518', accent: '#f3722c' },
+            { primary: '#43aa8b', secondary: '#389277', accent: '#4cc9f0' },
+            { primary: '#f72585', secondary: '#b5179e', accent: '#7209b7' },
+            { primary: '#4cc9f0', secondary: '#3a86ff', accent: '#4361ee' }
+        ];
+        
+        let currentColorIndex = 0;
+        
+        // Function to update chatbot colors
+        function updateChatbotColors() {
+            const colors = colorSchemes[currentColorIndex];
+            
+            // Update CSS variables
+            document.documentElement.style.setProperty('--primary', colors.primary);
+            document.documentElement.style.setProperty('--secondary', colors.secondary);
+            document.documentElement.style.setProperty('--accent', colors.accent);
+            
+            // Update chatbot specific elements
+            const chatbotElements = document.querySelectorAll('.chatbot-toggle, .chat-header, .user-message, .send-button, .submit-button');
+            chatbotElements.forEach(el => {
+                el.style.background = `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`;
+            });
+            
+            // Update quick replies
+            const quickReplies = document.querySelectorAll('.quick-reply');
+            quickReplies.forEach(reply => {
+                reply.style.borderColor = colors.primary;
+                reply.style.color = colors.primary;
+            });
+            
+            // Cycle to next color
+            currentColorIndex = (currentColorIndex + 1) % colorSchemes.length;
+        }
+        
+        // Auto color change every 3 seconds
+        setInterval(updateChatbotColors, 3000);
+        
+        // Toggle chatbot visibility
+        chatbotToggle.addEventListener('click', function() {
+            chatbotContainer.classList.toggle('active');
+        });
+        
+        // Close chatbot
+        chatClose.addEventListener('click', function() {
+            chatbotContainer.classList.remove('active');
+        });
+        
+        // Initial bot message
+        window.onload = function() {
+            addBotMessage("Welcome to Welfix! We specialize in digital solutions including Web Design, AI Solutions, Digital Marketing, Blog/Content Creation, and Business Consulting. How can I assist you today?");
+        };
+        
+        // Send message function
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message === '') return;
+            
+            addUserMessage(message);
+            messageInput.value = '';
+            
+            // Simulate bot thinking
+            setTimeout(() => {
+                handleUserMessage(message);
+            }, 1000);
+        }
+        
+        // Allow sending message with Enter key
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Add user message to chat
+        function addUserMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'user-message');
+            messageElement.innerHTML = `<p>${message}</p>`;
+            chatBody.appendChild(messageElement);
+            scrollToBottom();
+        }
+        
+        // Add bot message to chat
+        function addBotMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'bot-message');
+            messageElement.innerHTML = `<p>${message}</p>`;
+            chatBody.appendChild(messageElement);
+            scrollToBottom();
+        }
+        
+        // Scroll to bottom of chat
+        function scrollToBottom() {
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        
+        // Handle quick replies
+        function handleQuickReply(type) {
+            switch(type) {
+                case 'services':
+                    showServices();
+                    break;
+                case 'contact':
+                    showContactOptions();
+                    break;
+                case 'pricing':
+                    addBotMessage("Our pricing varies based on project requirements. We offer competitive rates and custom packages. Would you like to schedule a consultation for a detailed quote?");
+                    addBotMessage("You can also check our website for general pricing information: <a href='https://welfix-tec.github.io/welfix' target='_blank'>welfix-tec.github.io/welfix</a>");
+                    break;
+            }
+        }
+        
+        // Show services
+        function showServices() {
+            addBotMessage("We offer the following services:");
+            
+            const servicesGrid = document.createElement('div');
+            servicesGrid.classList.add('services-grid-chat');
+            servicesGrid.innerHTML = `
+                <div class="service-card-chat" onclick="askAboutService('Web Design')">
+                    <div class="service-icon-chat"><i class="fas fa-laptop-code"></i></div>
+                    <div class="service-name-chat">Web Design</div>
+                    <div class="service-desc-chat">Responsive websites, UI/UX design</div>
+                </div>
+                <div class="service-card-chat" onclick="askAboutService('AI Solutions')">
+                    <div class="service-icon-chat"><i class="fas fa-robot"></i></div>
+                    <div class="service-name-chat">AI Solutions</div>
+                    <div class="service-desc-chat">AI integration, automation</div>
+                </div>
+                <div class="service-card-chat" onclick="askAboutService('Digital Marketing')">
+                    <div class="service-icon-chat"><i class="fas fa-bullhorn"></i></div>
+                    <div class="service-name-chat">Digital Marketing</div>
+                    <div class="service-desc-chat">SEO, social media, PPC</div>
+                </div>
+                <div class="service-card-chat" onclick="askAboutService('Content Creation')">
+                    <div class="service-icon-chat"><i class="fas fa-pen-fancy"></i></div>
+                    <div class="service-name-chat">Content Creation</div>
+                    <div class="service-desc-chat">Blog writing, content strategy</div>
+                </div>
+                <div class="service-card-chat" onclick="askAboutService('Business Consulting')">
+                    <div class="service-icon-chat"><i class="fas fa-chart-line"></i></div>
+                    <div class="service-name-chat">Business Consulting</div>
+                    <div class="service-desc-chat">Strategy, optimization, growth</div>
+                </div>
+            `;
+            
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'bot-message');
+            messageElement.appendChild(servicesGrid);
+            chatBody.appendChild(messageElement);
+            scrollToBottom();
+            
+            addBotMessage("We offer all services both in-person and remotely. Which service are you most interested in?");
+        }
+        
+        // Ask about specific service
+        function askAboutService(service) {
+            addUserMessage(`Tell me more about ${service}`);
+            
+            setTimeout(() => {
+                switch(service) {
+                    case 'Web Design':
+                        addBotMessage(`Our <strong>${service}</strong> service includes responsive website development, UI/UX design, e-commerce solutions, and custom web applications. We create websites that work perfectly on all devices.`);
+                        break;
+                    case 'AI Solutions':
+                        addBotMessage(`Our <strong>${service}</strong> include AI integration for businesses, machine learning models, automation systems, AI-powered analytics, and custom AI development tailored to your specific needs.`);
+                        break;
+                    case 'Digital Marketing':
+                        addBotMessage(`Our <strong>${service}</strong> services include SEO optimization, social media marketing, PPC advertising, email marketing campaigns, and comprehensive brand strategy development.`);
+                        break;
+                    case 'Content Creation':
+                        addBotMessage(`Our <strong>${service}</strong> service covers SEO-optimized blog writing, content strategy planning, professional copywriting, video content creation, and social media content development.`);
+                        break;
+                    case 'Business Consulting':
+                        addBotMessage(`Our <strong>${service}</strong> includes business strategy development, process optimization, market analysis, growth planning, and operational efficiency improvements.`);
+                        break;
+                }
+                addBotMessage("Would you like to know about pricing or contact our team for more details?");
+            }, 1000);
+        }
+        
+        // Show contact options
+        function showContactOptions() {
+            addBotMessage("You can contact us through multiple channels:");
+            
+            const contactOptions = document.createElement('div');
+            contactOptions.classList.add('contact-options');
+            contactOptions.innerHTML = `
+                <div class="contact-option" onclick="showEmailForm()">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <div class="contact-method">Email</div>
+                        <div class="contact-detail">welfix.sol@gmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-option" onclick="openWhatsApp()">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <div class="contact-method">WhatsApp</div>
+                        <div class="contact-detail">+250 787 011 730</div>
+                    </div>
+                </div>
+                <div class="contact-option" onclick="showDirectMessageForm()">
+                    <div class="contact-icon"><i class="fas fa-comment-dots"></i></div>
+                    <div>
+                        <div class="contact-method">Direct Message</div>
+                        <div class="contact-detail">Send us a message directly</div>
+                    </div>
+                </div>
+            `;
+            
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'bot-message');
+            messageElement.appendChild(contactOptions);
+            chatBody.appendChild(messageElement);
+            scrollToBottom();
+        }
+        
+        // Show email form
+        function showEmailForm() {
+            addBotMessage("You can email us directly at <strong>welfix.sol@gmail.com</strong> or use the form below to send us a message:");
+            
+            const formContainer = document.createElement('div');
+            formContainer.classList.add('form-container');
+            formContainer.innerHTML = `
+                <form id="contactForm" action="https://formspree.io/f/mvgwgepj" method="POST">
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            `;
+            
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'bot-message');
+            messageElement.appendChild(formContainer);
+            chatBody.appendChild(messageElement);
+            scrollToBottom();
+            
+            // Add form submission handler
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                addUserMessage("I've submitted the contact form.");
+                addBotMessage("Thank you for your message! We'll get back to you within 24 hours.");
+                // In a real implementation, you would submit the form via AJAX
+                // For this demo, we'll just show a success message
+                this.reset();
+            });
+        }
+        
+        // Open WhatsApp
+        function openWhatsApp() {
+            const message = "Hello, I'm interested in Welfix services. Can you provide more information?";
+            const whatsappUrl = `https://wa.me/250787011730?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            addUserMessage("I'd like to contact via WhatsApp");
+            addBotMessage("I've opened WhatsApp for you. You can message us directly at +250 787 011 730");
+        }
+        
+        // Show direct message form
+        function showDirectMessageForm() {
+            addBotMessage("Please fill out the form below and we'll get back to you as soon as possible:");
+            
+            const formContainer = document.createElement('div');
+            formContainer.classList.add('form-container');
+            formContainer.innerHTML = `
+                <form id="directMessageForm" action="https://formspree.io/f/mvgwgepj" method="POST">
+                    <div class="form-group">
+                        <label for="dm-email">Your Email</label>
+                        <input type="email" id="dm-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dm-phone">Phone Number</label>
+                        <input type="tel" id="dm-phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="dm-message">Your Message</label>
+                        <textarea id="dm-message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Direct Message</button>
+                </form>
+            `;
+            
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'bot-message');
+            messageElement.appendChild(formContainer);
+            chatBody.appendChild(messageElement);
+            scrollToBottom();
+            
+            // Add form submission handler
+            document.getElementById('directMessageForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                addUserMessage("I've submitted the direct message form.");
+                addBotMessage("Thank you for your message! We'll respond to you within 24 hours.");
+                // In a real implementation, you would submit the form via AJAX
+                this.reset();
+            });
+        }
+        
+        // Handle user messages
+        function handleUserMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('service') || lowerMessage.includes('what do you offer')) {
+                showServices();
+            } 
+            else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone') || lowerMessage.includes('whatsapp')) {
+                showContactOptions();
+            }
+            else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
+                addBotMessage("Our pricing varies based on project scope and requirements. For a custom quote, I recommend scheduling a consultation with our team.");
+                addBotMessage("You can contact us via email at welfix.sol@gmail.com or call/WhatsApp us at +250 787 011 730");
+            }
+            else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                addBotMessage("Hello! How can I assist you with Welfix services today?");
+            }
+            else if (lowerMessage.includes('thank')) {
+                addBotMessage("You're welcome! Is there anything else I can help you with?");
+            }
+            else if (lowerMessage.includes('web design') || lowerMessage.includes('website')) {
+                addBotMessage("Our web design service includes responsive website development, UI/UX design, e-commerce solutions, and custom web applications. We create websites that work perfectly on all devices.");
+            }
+            else if (lowerMessage.includes('ai') || lowerMessage.includes('artificial intelligence')) {
+                addBotMessage("Our AI solutions include AI integration for businesses, machine learning models, automation systems, AI-powered analytics, and custom AI development tailored to your specific needs.");
+            }
+            else if (lowerMessage.includes('digital marketing') || lowerMessage.includes('seo') || lowerMessage.includes('social media')) {
+                addBotMessage("Our digital marketing services include SEO optimization, social media marketing, PPC advertising, email marketing campaigns, and comprehensive brand strategy development.");
+            }
+            else if (lowerMessage.includes('content') || lowerMessage.includes('blog')) {
+                addBotMessage("Our content creation service covers SEO-optimized blog writing, content strategy planning, professional copywriting, video content creation, and social media content development.");
+            }
+            else if (lowerMessage.includes('consulting') || lowerMessage.includes('business strategy')) {
+                addBotMessage("Our business consulting includes business strategy development, process optimization, market analysis, growth planning, and operational efficiency improvements.");
+            }
+            else if (lowerMessage.includes('remote') || lowerMessage.includes('in-person') || lowerMessage.includes('location')) {
+                addBotMessage("We offer all our services both remotely and in-person, giving you the flexibility to choose what works best for your business. We serve clients worldwide!");
+            }
+            else {
+                addBotMessage("I'm here to help you learn about Welfix services. You can ask me about our web design, AI solutions, digital marketing, content creation, or business consulting services. Or would you like to contact our team directly?");
+            }
+        }
     </script>
 </body>
 </html>
-
-
