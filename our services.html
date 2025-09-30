@@ -1311,7 +1311,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">
+                <a href="index.html" class="logo">
                     <img src="welfix logo 200x60px.png" alt="Welfix Logo" class="logo-image">
                 </a>
                 <ul class="nav-links">
@@ -1420,7 +1420,7 @@
         <div class="container">
             <div class="service-content">
                 <div class="service-image">
-                    <img src="https://images.pexels.com/photos-278430/pexels-photo-278430.jpeg" alt="QR Code Service">
+                    <img src="https://images.pexels.com/photos/278430/pexels-photo-278430.jpeg" alt="QR Code Service">
                 </div>
                 <div class="service-text">
                     <h2>QR Code Solutions</h2>
@@ -1755,50 +1755,66 @@
     </div>
 
     <script>
-        // Mobile menu toggle functionality
+        // Mobile menu toggle functionality - FIXED VERSION
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
             const body = document.body;
 
-            mobileMenuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                
-                // Toggle hamburger icon
-                const icon = this.querySelector('i');
-                if (mobileMenu.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                    body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                    body.style.overflow = ''; // Restore scrolling
-                }
-            });
-
-            // Close mobile menu when clicking on a link
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                    body.style.overflow = '';
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent event bubbling
+                    mobileMenu.classList.toggle('active');
+                    
+                    // Toggle hamburger icon
+                    const icon = this.querySelector('i');
+                    if (mobileMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        body.style.overflow = ''; // Restore scrolling
+                    }
                 });
-            });
 
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    mobileMenu.classList.remove('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                    body.style.overflow = '';
-                }
-            });
+                // Close mobile menu when clicking on a link
+                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        body.style.overflow = '';
+                    });
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (mobileMenu.classList.contains('active') && 
+                        !mobileMenu.contains(event.target) && 
+                        !mobileMenuToggle.contains(event.target)) {
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        body.style.overflow = '';
+                    }
+                });
+
+                // Close mobile menu on escape key
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        body.style.overflow = '';
+                    }
+                });
+            }
 
             // FAQ functionality
             const faqQuestions = document.querySelectorAll('.faq-question');
@@ -1823,6 +1839,15 @@
             const anchorLinks = document.querySelectorAll('a[href^="#"]');
             anchorLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
+                    // Close mobile menu if open
+                    if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        body.style.overflow = '';
+                    }
+                    
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
